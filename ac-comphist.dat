@@ -1,0 +1,112 @@
+((("lambda" .
+   [0 0 0 1 1 0])
+  ("parse_product_id_from_file" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("exit" .
+   [1 0 0 0])
+  ("stderr" .
+   [1 0 0 0 0 0])
+  ("fprintf" .
+   [0 0 0 0 1 0 0])
+  ("value" .
+   [3 0 1 0 0])
+  ("convert_hex_to_int" .
+   [0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0])
+  ("file" .
+   [2 0 0 0])
+  ("read" .
+   [5 0 0 0])
+  ("size" .
+   [7 0 0 0])
+  ("DEFAULT_CAPACITY" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("capacity" .
+   [0 0 0 0 5 0 0 0])
+  ("char" .
+   [0 0 1 1])
+  ("printf" .
+   [0 0 0 0 0 1])
+  ("data" .
+   [6 0 0 0])
+  ("uint" .
+   [5 0 0 1])
+  ("serial_data_count" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 1 0])
+  ("index" .
+   [1 0 1 2 0])
+  ("sizeof" .
+   [0 0 0 1 1 0])
+  ("serial_data" .
+   [1 0 0 3 3 4 0 0 0 0 0])
+  ("uint8" .
+   [13 0 0 0 1])
+  ("python-mode-map" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("connected" .
+   [0 0 0 0 0 1 0 0 0])
+  ("ac-show-menu-immediately-on-auto-complete" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [1 0 0 0])
+  ("files" .
+   [0 0 1 0 0])
+  ("long" .
+   [1 0 0 0])
+  ("len" .
+   [1 0 0])
+  ("smart-compile" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("define-key" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("add-to-list" .
+   [0 0 0 0 0 0 1 0 0 0 0])
+  ("a" .
+   [1])
+  ("global-set-key" .
+   [0 0 0 2 0 0 0 0 0 0 0 0 0 0])
+  ("output_file" .
+   [0 0 0 1 0 0 1 0 0 0 0])
+  ("array_size" .
+   [0 0 0 3 0 0 0 0 0 0])
+  ("array_a_size" .
+   [0 0 0 0 0 0 2 0 0 0 0 0])
+  ("require" .
+   [0 0 0 1 0 0 0])
+  ("Auto-complete" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("OS_LINUX" .
+   [0 0 1 0 0 0 0 0])
+  ("elif" .
+   [0 0 1 0])
+  ("endif" .
+   [0 0 0 1 0])
+  ("test_data" .
+   [0 0 0 0 1 0 0 0 0])
+  ("test" .
+   [2 0 0 0])
+  ("OS_WINDOWS" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("key_offset" .
+   [0 0 0 1 0 0 0 0 0 0])
+  ("product_id_data" .
+   [0 0 0 3 3 0 0 0 0 0 0 0 0 0 0])
+  ("product_id_count" .
+   [0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("serial_buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("current_index" .
+   [1 0 0 1 0 2 0 0 0 0 0 0 0])
+  ("kbd" .
+   [1 0 0])
+  ("move-text" .
+   [0 0 0 0 0 0 1 0 0])
+  ("move-text-up" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("interactive" .
+   [0 0 0 0 1 0 1 0 0 0 0])
+  ("font-lock-pseudo-keyword-face" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("before-save-hook" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("whitespace-cleanup" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])))

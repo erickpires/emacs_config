@@ -1,0 +1,112 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/erick/rust/sokoban/assets/" . "maps/")
+ ("/home/erick/LCI/python_distributed_image/" . "email_example/")
+ ("/home/erick/rust/sokoban/" . "src/")
+ ("/home/erick/rust/" . "sokoban/")
+ ("/home/erick/Arduino/sketchbook/" . "AlarmCoffee/")
+ ("/home/erick/C/" . "template/")
+ ("/home/erick/Dropbox/Public/blog/content/" . "post/")
+ ("/home/erick/Dropbox/Public/blog/" . "content/")
+ ("/home/erick/Dropbox/Public/" . "blog/")
+ ("/home/erick/Dropbox/" . "Public/")
+ ("/home/erick/LCI/wks/" . "Imagem/")
+ ("/" . "etc/")
+ ("/home/erick/LCI/" . "python_distributed_image/")
+ ("/home/erick/" . "LCI/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/erick/rust/sokoban/src/"
+ "/home/erick/"
+ "/home/erick/.emacs.d/"
+ "/home/erick/rust/sokoban/assets/maps/"
+ "/home/erick/LCI/python_distributed_image/"
+ "/home/erick/C/template/"
+ "/home/erick/LCI/wks/Imagem/"
+ "/home/erick/LCI/python_distributed_image/email_example/"
+ "/home/erick/LCI/windows_serial/"
+ "/home/erick/rust/sokoban/"
+ "/home/erick/Arduino/sketchbook/AlarmCoffee/"
+ "/home/erick/Dropbox/Public/blog/content/post/"
+ "/etc/"
+ "/home/erick/LCI/"
+ "/tmp/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "main.rs"
+ ".emacs"
+ ".emacs.desktop"
+ "1-starting.lvl"
+ "ocs-onthefly-original"
+ "template.c"
+ "automint.sh"
+ "send_email.py"
+ "get_windows_serial_from_product_id.c"
+ "Cargo.lock"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/erick/" (22761 25777 853861 434000) ".mplabcomm/" ".dropbox/" "SharedFolder/" "[HorribleSubs] Orange - 03 [1080p].mkv" ".aegisub/" "[HorribleSubs] 3-gatsu no Lion - 03 [720p].mkv" ".yEd/" ".cargo/" "firefox@commafeed.com.xpi" ".gnome2/" "Transcript Desenv_1_BKP_29_08_2016.ova" ".android/" ".TeXmacs/" "PlayOnLinux's virtual drives/" "[HorribleSubs] 3-gatsu no Lion - 09 [720p].mkv" "TCC (14).pdf" "[HorribleSubs] 3-gatsu no Lion - 01 [720p].mkv" ".IdeaIC2016.1/" "wks_proposal" "Biblioteca do calibre/" "[HorribleSubs] 3-gatsu no Lion - 10 [720p].mkv" ".adobe/" ".pki/" ".gstreamer-0.10/" ".goldendict/" ".ccache/" "Documentos/" "Fringe HQ/" ".platformio/" "Brother HL-1202 Driver/" "sokoban-go/" "Eletronic Furnace/" "[HorribleSubs] 3-gatsu no Lion - 07 [720p].mkv" "IdeaProjects/" "Zankyou no Terror_残響のテロル「Dare ka, Umi wo.」-AV7QjFdNkUk.m4a" "arch_linux_raspberry.img" "sketchbook/" ".pulse-cookie" "Oscilloscope-1.0.3-pre-linux64.zip" "capacitores sony hmk353bs.txt" "identidade.png" ".emacs~" "[HorribleSubs] Mob Psycho 100 - 01 [720p].mkv" ".blogs/" "Downloads/" "python/" ".m2/" ".sane/" "minimal_linux_live.iso" "PSX/" "[HorribleSubs] Orange - 01 [1080p].mkv" "SNES/" ".macromedia/" "[HorribleSubs] 3-gatsu no Lion - 08 [720p].mkv" ".covers/" ".ICEauthority" ".electron-gyp/" "android-sdk/" "[HorribleSubs] 3-gatsu no Lion - 02 [720p].mkv" ".arduino15/" "Hellblazer/" ".grive-setup.log" "Machine Learning/" "[HorribleSubs] 3-gatsu no Lion - 05 [720p].mkv" ".jd/" "VirtualBox VMs/" "keepasswks.kdbx" "[HorribleSubs] Occultic;Nine - 08 [720p].mkv" ".dropbox-dist/" ".gitconfig" ".mono/" "Kara no Kyoukai - Shiki's Theme Compilation-ZB_ltsS9w4c.m4a" ".gEDA/" ".zcompdump" ".xchat2/" ".dvdcss/" ".steampid" ".ssh/" "arquivo.pdf" "Inconsolata-Regular.ttf" "Oscilloscope/" "diego" ".zshrc" ".IdeaIC2016.3/" ".config/" ".Skype/" "Dropbox/" ".lastpass/" "Google Drive/" "WizardChess/" ".Transcribe!7" "[HorribleSubs] Occultic;Nine - 09 [720p].mkv" "Arduino/" ".emacs" "bestcode.cpp" ".TrueCrypt/" ".steampath" "[HorribleSubs] Orange - 04 [1080p].mkv" ".nixieclock" ".IdeaIC2017.1/" "[HorribleSubs] 3-gatsu no Lion - 06 [720p].mkv" "[HorribleSubs] Hibike! Euphonium S2 - 12 [1080p].mkv" "Inconsolata-Bold.ttf" ".java/" "Vídeos/" "Projects/" "libwidevinecdmadapter.so" "Phenomeno.part2.rar" ".mpd/" "Imagens/" "progs/" "Steam/" "[HorribleSubs] Hibike! Euphonium S2 - 11 [1080p].mkv" ".mplab_ide/" ".zshrc~" "mpv-shot0001.jpg" "arduino-1.0.6/" ".bash_history" ".texlive/" ".AndroidStudio2.2/" ".subversion/" "mpv-shot0002.jpg" ".fceux/" ".trepan3k_hist" ".steam/" "libwidevinecdm.so" ".viminfo" "gpu_off" ".gnome/" ".git_repositories/" ".pcsx/" "Guitar Hero III - Legends of Rock (USA).7z" ".fltk/" ".gnupg/" ".go/" "pgs" "AndroidStudioProjects/" ".dbus/" ".pydistutils.cfg" ".hardinfo/" "wordpress.css" "go/" ".zsnes/" ".netbeans/" "07 While My Guitar Gently Weeps.mp3" ".bashrc" "test_bank_graph_coverage.graphml" ".emulator_console_auth_token" "C/" ".rustup/" "AnimeJazzCollection/" ".v8flags.5.5.372.41.erick.json" ".Braid/" "workspace/" ".kshdb_hist" "AndroidStudioWorkspace/" "test_bank_graph_coverage_use_defs.graphml" ".arduino/" "kicad_nixie/" "Phenomeno.part5.rar" ".python_history" ".gradle/" ".local/" "Manga/" "[HorribleSubs] Occultic;Nine - 10 [720p].mkv" "Modelos/" ".mozilla/" ".tgdb/" "shiki.jpg" "197595.jpg" ".nemiver/" ".AndroidStudio2.1/" ".zenmap/" ".Scilab/" ".audacity-data/" ".wine-pipelight/" ".kde4/" ".bsnes/" "Público/" "VK2828U7G5LF Data Sheet 20150902.pdf" "Phenomeno.part1.rar" "Guitar Pro files/" ".gimp-2.8/" "[HorribleSubs] Mob Psycho 100 - 03 [720p].mkv" ".PlayOnLinux/" ".cgdb/" "myanimelist.css" "[HorribleSubs] 3-gatsu no Lion - 04 [720p].mkv" "footprints/" "Área de trabalho/" ".gksu.lock" ".yeqwqauh" ".dlv/" "Música/" ".IdeaIC2016.2/" "[HorribleSubs] Orange - 02 [1080p].mkv" "rust/" ".thumbnails/" "dominio.pdf" "serial_xp" "Phenomeno.part4.rar" "variadic-tuple.cpp" "_geeks3d_gputest_log.txt" "LCI/" "_geeks3d_gputest_scores.csv" ".emacs.d/" "Arduino_Build/" ".esd_auth" "01 in the garden of sinners.mp3" "[HorribleSubs] Mob Psycho 100 - 02 [720p].mkv" ".swt/" ".eclipse/" "Phenomeno.part3.rar" "Game of Thrones Season 6 Soudtrack 03 - Light of the Seven-MFK0yG8xG5I.m4a" "podcasts/" "java/" "wks" "datasheets/" ".histfile" ".recently-used" ".cache/" "MPLABXProjects/" ".zdirs" ".lesshst" ".vscode/" ".wget-hsts" "../" "./")
+
+ ("/home/erick/rust/sokoban/src/" (22761 18179 496009 459000) "main.rs" "../" "./")
+
+ ("/home/erick/.emacs.d/" (22761 24344 464576 987000) ".emacs.desktop" "elisp/" "session.10de16cf25c7b64e6d149137158172871200000009320052" ".emacs.desktop.lock" "themes/" "history" "auto-save-list/" "snippets/" "session.1098e6b4ea30290881149160528684602600000009460056" "ido.last" "ac-comphist.dat" "../" "./" "ido.last~" "elpa/")
+
+ ("/home/erick/rust/sokoban/assets/maps/" (22760 17223 266944 993000) "0-tutorial.lvl" "2-for-real.map_old" "1-starting.lvl" "3-zimbrao.map_old" "1-starting.map_old" "2-for-real.lvl" "3-zimbrao.map" "0-tutorial.map" "1-starting.map" "text.lvl" "2-for-real.map" "../" "./" "text.map" "3-zimbrao.lvl")
+
+ ("/home/erick/rust/sokoban/assets/" (22760 16349 490040 943000) "maps/" "font_pixelated.ttf" "guitar.mp3" "animate-green.bmp" "target.bmp" "floor.bmp" "animate (cópia).bmp" "../" "./" "box.bmp" "wall.bmp" "sair_so.mp3" "font_6809.ttf" "player.bmp" "animate.bmp")
+
+ ("/tmp/" (22760 14520 850405 269000) ".X11-unix/" ".ICE-unix/" ".XIM-unix/" ".font-unix/" ".Test-unix/" "systemd-private-4b56dbf460c742cb98147704bc3077ec-systemd-timesyncd.service-cPnzsX/" "systemd-private-4b56dbf460c742cb98147704bc3077ec-colord.service-Gb4Rm0/" ".esd-120/" ".esd-1000/" "tracker-extract-files.1000/" "firefox_erick/" "gnotifier/" "../" "./")
+
+ ("/etc/" (22760 10105 443257 178000) "gconf/" "libao.conf" "hostapd/" "wgetrc" "login.defs" "vmware/" "os-release" "pam.d/" "crypttab" "gssproxy/" "sane.d/" "passwd.pacnew" "modprobe.d/" "vimrc" "gshadow-" "libnl/" "initcpio/" "chromium/" "opt/" "mail.rc" "mime.types" "mpv/" "modules-load.d/" "sysctl.d/" "lynx.cfg" "request-key.conf" "ssh/" "fstab" "cron.monthly/" "logrotate.d/" "pulse/" "mpd.conf" "mtab" "skel/" "UPower/" "vconsole.conf" "cron.d/" "smartd.conf" "grub.d/" "udisks2/" "ifplugd/" "gtk-3.0/" "vbox/" "cron.hourly/" "mysql/" "resolvconf.conf" "locale.conf" "asound.conf" "gai.conf" "lsb-release" "arch-release" "libpaper.d/" "samba/" "nfsmount.conf" "dkms/" "nsswitch.conf" "profile.d/" "sasl2/" "foomatic/" "ca-certificates/" "ts.conf" "ssl/" "xml/" "conf.d/" "udev/" "gnome-vfs-mime-magic" "passwd.OLD" "netctl/" "fuse.conf" "printcap" "cron.deny" "ld.so.conf.d/" "depmod.d/" "gnome-vfs-2.0/" "shadow.pacnew" "man_db.conf" "pacman.conf" "openldap/" "bind.keys" "machine-id" "profile" "gemrc" "dhcpcd.duid" "resolv.conf.bak" "cron.daily/" "ImageMagick-6/" "request-key.d/" "xinetd.d/" "mke2fs.conf" "lynx.lss" "ld.so.cache" "zsh/" "gtk-2.0/" "gss/" "services" "gdm/" "avrdude.conf" "sudoers" "docker/" "kernel/" "protocols" "gimp/" "rc_maps.cfg" "adjtime" "locale.gen" "locale.gen.pacnew" "php/" "avahi/" "tmpfiles.d/" "fonts/" "shadow" "papersize" "java-8-openjdk/" "init.d/" "texmf/" "dnsmasq.conf" "libvirt/" "issue" "lirc/" "fakechroot/" "java-7-openjdk/" "speech-dispatcher/" "group.pacnew" "bash.bash_logout" ".updated" "ceph/" "hardinfo.distro" ".mplab_ide/" "hosts" "xdg/" "NetworkManager/" "gshadow.pacnew" "nfs.conf" "gssapi_mech.conf" "hostname" "passwd" "shells" "sudoers.d/" "profile.pacnew" "rsyncd.conf" "iptables/" "idnalias.conf" "hp/" "netconfig" "mkinitcpio.d/" "slsh.rc" "wpa_supplicant/" ".pwd.lock" "bash.bashrc" "polkit-1/" "abcde.conf" "gdb/" "yaourtrc" "libuser.conf" "ostree-mkinitcpio.conf" "vmware-installer/" "mono/" "default/" "rpc" "lvm/" "cron.weekly/" "group-" "nscd.conf" "irman.conf" "systemd/" "pcmcia/" "mtools.conf" "vdpau_wrapper.cfg" "gshadow" "trusted-key.key" "httpd/" "mplab_ide.conf" "teamviewer/" "geoclue/" "exports" "cifs-utils/" "adobe/" "sudoers.pacnew" "inputrc" "ld.so.conf" "dhcpcd.secret" "dbus-1/" "dhcpcd.conf" "pacman.d/" "bluetooth/" "libreoffice/" "mkinitcpio.conf" "anacrontab" "binfmt.d/" "passwd-" "krb5.conf" "whois.conf" "create_ap.conf" "pkcs11/" "nanorc" "makepkg.conf" "group" "java-jdk7/" "drirc" "shadow-" "rc_keymaps/" "logrotate.conf" "cups/" "ethertypes" "iproute2/" ".java/" "X11/" "host.conf" "exports.d/" "vmware-vix/" "apache-ant/" "idn.conf" "security/" "pango/" "environment" "resolv.conf" "securetty" "localtime" "mdadm.conf" "ostree/" "motd" "../" "./")
+
+ ("/home/erick/Dropbox/Public/blog/content/post/" (22759 1302 781747 779000) "a_maldicao_da_abstracao.md" "2014-01-17-super-hexagon-e-o-aprendizado-por-repeticao.md" "2014-03-30-aventuras-de-menino.md" "de_onde_viemos_para_onde_vamos.md" "problema_da_parada_para_programadores.md~" "a_ignorancia_e_uma_bencao.md" "2015-09-05-sobre-a-pequenez-e-a-grandeza.md" "2014-07-03-todos-deveriam-aprender-a-programar-spoiler-nao.md" "2014-04-24-relacionando-donnie-darko-com-madoka-magika.md" "problema_da_parada_para_programadores.md" "welcome_hugo.md" "../" "./" "2014-06-21-limbo-e-os-finais-que-nao-sao-finais.md")
+
+ ("/home/erick/C/template/" (22760 5300 381911 834000) ".gitignore" "default_definitions.h" "build.sh" "TAGS" ".git/" "template" "template.c" "#template.c#" "test/" "README.md" "temp" "string_buffer.c" "string_buffer.h" "template.h" "../" "./" "main" ".vscode/")
+
+ ("/home/erick/LCI/windows_serial/" (22759 43373 238589 264000) "useful_data.txt" "../" "./" "get_windows_serial_from_product_id" "get_windows_serial_from_product_id.c")
+
+ ("/home/erick/LCI/python_distributed_image/email_example/" (22706 7857 419836 428000) "send_email.py" "../" "./")
+
+ ("/home/erick/LCI/python_distributed_image/chat_example/" (22705 46316 734922 704000) "server.py" "threads.py" "__pycache__/" "client.py" "../" "./")
+
+ ("/home/erick/rust/sokoban/" (22742 64359 359996 899000) ".gitignore" "src/" ".git/" "Cargo.lock" "target/" "README.md" "assets/" "../" "./" "Cargo.toml")
+
+ ("/home/erick/rust/" (22740 27680 32098 27000) "sokoban/" "guessing_game/" "../" "./" "hello_world/")
+
+ ("/home/erick/Arduino/sketchbook/AlarmCoffee/" (22069 36675 114409 375000) "AlarmCoffee.ino" "LICENSE" ".git/" "test_clock.txt" "README.md" "../" "./")
+
+ ("/home/erick/Arduino/sketchbook/" (22625 13085 202415 959000) "TesteInterrupt/" "MyBlink/" "AlarmCoffee/" "RotaryEncoder/" "BlinkSerial/" "que_sera_sera/" "MyDelay/" "TestNormalInterrupt/" "MyTone/" "TermometroInterno/" "Dimmer/" "TemperaturaLM35/" "hardware/" "NixieClock/" "DisplayTemp/" "libraries/" "NixieClockBackup/" "../" "./" "Celsius/" "LedToggle/" "BinaryCounter/" "Display/" "GeniusGame/" "NixieCounter/" "music_player/" "test_clock_2hz/")
+
+ ("/home/erick/Arduino/" (22624 20704 913208 573000) "sketchbook/" "7segmentos/" "hardware/" "libraries/" "../" "./" "test_clock/" "sound_pwm/")
+
+ ("/home/erick/Dropbox/Public/blog/content/" (22372 46494 926280 184000) "about.md" "post/" "../" "./")
+
+ ("/home/erick/Dropbox/Public/blog/" (22372 47099 767302 530000) ".gitignore" "themes/" ".git/" "old_posts/" "static/" "data/" "content/" "README.md" "config.toml" "layouts/" "archetypes/" "../" "./" "deploy.sh" "public/")
+
+ ("/home/erick/Dropbox/Public/" (22425 19220 707436 581000) ".dropbox" "birl_1.mp3" "jpeg (4).jpg" "jpeg (6).jpg" "favicon.png" "trabalho-tec.pdf" "teste/" "How to use the Public folder.txt" "Bandeco.apk" "Nexus_5_API_23_teste.avd.tar.gz" "commafeed-newsplus.apk" "jpeg (2).jpg" "blog/" "cardapio.htm" "jpeg (1).jpg" "FishFreebie.psd" "jpeg.jpg" "jpeg (3).jpg" "jpeg (7).jpg" "comprovante_12-02-2016_115555.pdf" "jpeg (5).jpg" "favicon.ico" "grupo.txt" "LIVRO.docx" "dropbox.apk" "games/" "jpeg (8).jpg" "Apresentação.pdf" "vitor_swim.png" "erickpires/" "trabalho-tec.tex" "Trapézio.png" "mrbrain-8bit.zip" "favicon-2.ico" "../" "./" "Screenshot_2014-01-24-19-29-35.png" "Messenger_com.facebook.orca.apk" "Captura de tela de 2016-03-31 20-28-58.png" "apresentação-computação_quantica-final.pdf" "rpc.tar.gz" "header_php.txt" "trabalho-tec_parte-quantica.tex")
+
+ ("/home/erick/Dropbox/" (22758 64218 561664 85000) ".dropbox" "Lista Materiais LCI.txt" ".~6047818472135626339HI" "Projetos Colaborativos/" "8º Período/" "Reunião Espen - 31-08_2.wav" "Eletrônica/" "7º Período/" "CompiiLambda2.ods" "Currículo - Erick Pires.docx" "Seminario/" "Tanscription Comparison.odt" "Programming/" "Comprovantes/" "9º Período/" "Tanscription Comparison_synthesized.odt" "4º Período/" "NixieClockLCD/" "Reunião Espen - 31-08.m4a" "Projeto/" "6º Período/" "3º período/" "Public/" "Photos/" "renovacao_bu.pdf" "Trab Arquitetura/" "Reunião (cópia).txt" "transcribe/" ".zshrc" "nanorc" "Whatsapp Backup/" "GimpProjects/" "5º Período/" "Allegro/" "Currículo - Rogerio Pires.pdf" "compii.tar.gz" "Notas Comp2.ods" ".dropbox.cache/" "scripts/" "Currículo - Erick Pires.pdf" "WER.xlsx" ".~8277508979779947652HI" "Programas/" "Camera Uploads/" "10º Período/" ".~7877000213732604343HI" "BD-Tudibom/" "minecraft_saves/" "vivo/" "zshrc" "workspace/" "../" "./" "Sublime Sync/" "BD - Tudibom/" "WER/" "PerfectP2P/" ".~8800050976994983277HI" "caixa_da_bagunça/" "1º Período/" ".~3691332117988908901HI" "Reunião Espen - 31-08 - transcrição manual.txt" "Capturas de tela/" "Currículo - Rogerio Pires.docx" "Arquivos Compartilhados/" "Backup Imagens/" "Reunião.txt" "nova/" "rest/" "2º Período/" "Pedra do Sino/" ".~8694681329894495127HI" "Reunião Espen - 31-08_1.wav" "CompiiFramework1.ods" "Prolific Driver/" "Sorting Algorithms/" "Projeto Comp./" "podcasts/" ".~1599487986468482525HI" "internal_meetings/" ".~2361956395166880674HI" "Python/")
+
+ ("/home/erick/LCI/wks/Imagem/" (22694 12224 868469 865000) "ShaderLabs.ico" "automint.sh" "wget-wks" "lightdm/" "autowindows.sh" "burg/" "createShortcut.bat" "grubf3.sh" "Windows/" "checkWeb.sh" "desktop/" "autowindows.py" "autowindows.bat" "autoimagem.sh.bak" "linux_login_screen/" "index.html" "automint.sh.bak" "automint.sh.bak.2" "newRegValues.reg" "autowindows.sh.bak" "logo_dcc.png" "online.png" "../" "./" "posimagem-mint.sh" "não_instalados" "offline.png" "autoimagem.sh" "wget-wks.bak")
+
+ ("/home/erick/LCI/wks/" (22754 38379 438368 336000) ".gitignore" "lamp.sh" "Imagem/" ".git/" "keepasswks.kdbx" "index.html" "windows_exes_to_download.txt" "contributors.txt" "../" "./" "static_programs/")
+
+ ("/home/erick/LCI/" (22758 17214 80895 940000) "clonezilla-live-customized.iso" "python_distributed_image/" "clonezilla-live-customized.zip" "get_windows_serial_from_pid.c~" "wks_bkp/" "../" "./" "windows_serial/" "wks/")
+
+ ("/home/" (22400 25589 986893 370000) "lost+found/" "new_erick/" "../" "./" "erick/")
+
+ ("/home/erick/LCI/python_distributed_image/" (22757 35966 428765 976000) ".gitignore" "reference" "email_example/" "worker.py" "ocs-onthefly-original" ".git/" "chat_example/" "#coordinator.py#" "common_things.py" "__pycache__/" "ocs-onthefly" "coordinator.py" "../" "./" "things_to_consider")
+
+ ("/home/erick/C/" (22732 47846 870693 58000) "yes/" "forca/" "mandelbrot_dive/" "pilha.c" "caracteres.c" "Metodo de Newton/" "list_anagrams/" "busca_bin.c" "cgal/" "bit_file.c" "Hello_world.c" "GSL/" "bmp_filter_applier/" "template/" "pasta sem título/" "sudoku_solver.zip" "strings/" "ncurses/" "game_of_life/" "variable_arguments.c" "SVD/" "matrix_multiply_test/" "one.c" "pass.c" "analisador_lexico.cpp" "deus.c" "SRT/" "spl_compiler/" "kmp/" "fibonacci.c" "Parte2-2.cpp" "ContactVolume/" "teste2.c" "sorter/" "Allegro/" "subtitle_repair/" "stdin_stderr.c" "sudoku_solver/" "SDL/" "ASCII_to_RGB_color.c" "fluid_simulator/" "sudoku_solver_bkp/" "file_size/" "lista (cópia).c" "utilities/" "options_parser/" "busca_bin.c~" "xor-scrambler/" "../" "./" "sqrt/" "Buffered Reader/" "lista.c" "binary_to_ascii/" "Parte2.c" "erro leitura/" "digito.c" "ASCII_to_RGB_color")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
