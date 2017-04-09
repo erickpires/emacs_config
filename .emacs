@@ -17,7 +17,7 @@
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -46,6 +46,9 @@
 ;;
 (load-theme 'monokai t)
 
+(setq undo-limit 80000000)
+(setq undo-strong-limit 120000000)
+(setq undo-outer-limit 1200000000)
 
 (require 'ido)
 (ido-mode t)
@@ -54,6 +57,23 @@
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-smart-open t)
+
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
+
+;;
+;; Align code
+;;
+(defun my_align (start end)
+    "Repeat alignment with respect to
+     the given regular expression."
+    (interactive "r")
+    (align-regexp start end
+        (concat "\\(\\s-*\\)" "\\(:\\)\\|\\(=\\)\\|\\(=>\\)") 1 1))
+
+(global-set-key (kbd "C-c C-a") 'my_align)
+
 ;;
 ;; Expand region
 ;;
@@ -114,7 +134,9 @@
 
 (setq scroll-step 1)
 
+;;
 ;; Identation
+;;
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq indent-line-function 'insert-tab)
@@ -202,25 +224,38 @@
         '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\)" 1 font-lock-warning-face t)))))
 
 
-;; Highlight current line
-(global-hl-line-mode 1)
-
-;; Save seassion
-(desktop-save-mode 1)
+;;
+;; Session configs
+;;
+(setq auto-save-timeout 60)     ;; Autosave every minute
+(setq make-backup-files nil)    ;; No backup files
+(desktop-save-mode 1)           ;; Save session
+(setq require-final-newline 't) ;; Always newline at end of file
 (savehist-mode 1)
 
-;; Show line-number in the mode line
-(line-number-mode 1)
+;;
+;; Interface configs
+;;
+(tool-bar-mode -1)                              ;; No toolbar
+(menu-bar-mode -1)                              ;; No menubar
+(global-hl-line-mode 1)                         ;; Highlight current line
+(line-number-mode 1)                            ;; Show line-number in the mode line
+(column-number-mode 1)                          ;; Show column-number in the mode line
+(mouse-wheel-mode t)                            ;; Mouse-wheel enabled
+(show-paren-mode 1)                             ;; Highlight parenthesis pairs
+(setq truncate-partial-width-windows nil)       ;; Don't truncate long lines
+(setq read-file-name-completion-ignore-case 't) ;; Ignore case when completing file names
+(setq read-buffer-completion-ignore-case 't)    ;; Ignore case when completing buffer names
+(setq-default case-fold-search t)               ;; Search is case sensitive
+(defalias 'yes-or-no-p 'y-or-n-p)               ;; y/n instead of yes/no
 
-;; Show column-number in the mode line
-(column-number-mode 1)
 
 (global-linum-mode 1)
 (setq linum-format "%d ")
 
 
 ;;
-;;; Fira code hack for emacs
+;; Fira code hack for emacs
 ;;
 
 ;; This works when using emacs --daemon + emacsclient
