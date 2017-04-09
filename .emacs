@@ -11,6 +11,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
+ '(ccm-recenter-at-end-of-file t)
+ '(ccm-vpos-init (quote (round (window-text-height) 2)))
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
@@ -42,10 +44,26 @@
 
 
 ;;
+;; Init server
+;;
+(server-start)
+
+
+;;
+;; Spell check
+;;
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(setq ispell-dictionary "english")
+
+;;
 ;; Theme
 ;;
 (load-theme 'monokai t)
 
+;;
+;; Undo
+;;
 (setq undo-limit 80000000)
 (setq undo-strong-limit 120000000)
 (setq undo-outer-limit 1200000000)
