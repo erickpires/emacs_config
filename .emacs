@@ -19,7 +19,7 @@
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -112,9 +112,6 @@
 ;; Switch current buffer to other window
 (global-set-key (kbd "C-S-x b") (lambda () (interactive) (switch-to-buffer-other-window (current-buffer))))
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
-
-
 ;;
 ;; Center cursor
 ;;
@@ -128,7 +125,6 @@
 (require 'move-text)
 (global-set-key [C-S-up] 'move-text-up)
 (global-set-key [C-S-down] 'move-text-down)
-
 
 ;;
 ;; Multiple cursors
