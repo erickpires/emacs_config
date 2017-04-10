@@ -67,6 +67,8 @@
 (setq undo-limit 80000000)
 (setq undo-strong-limit 120000000)
 (setq undo-outer-limit 1200000000)
+(setq undo-tree-auto-save-history t)
+
 
 (require 'ido)
 (ido-mode t)
