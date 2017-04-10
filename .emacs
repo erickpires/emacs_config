@@ -19,7 +19,7 @@
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -120,6 +120,7 @@
 ;;
 (require 'centered-cursor-mode)
 (global-centered-cursor-mode +1)
+(global-set-key (kbd "C-v") nil) ;; unset a key
 
 ;;
 ;; Move text
@@ -128,6 +129,16 @@
 (global-set-key [C-S-up] 'move-text-up)
 (global-set-key [C-S-down] 'move-text-down)
 
+
+;;
+;; Multiple cursors
+;;
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;
 ;; Auto-complete
