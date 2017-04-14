@@ -240,11 +240,12 @@ With argument, do this that many times."
 (require 'smart-compile)
 (setq smart-compile-alist
       (append
-       '(("\\.c\\'"          . "gcc -Wall -lm -g -da -lpthread %f -o %n")
-         ("\\.[Cc]+[Pp]*\\'" . "g++ -std=c++14 -Wall -g %f -o %n")
-         ("\\.lua\\'"        . "lua %f")
-         ("\\.py\\'"         . "python %f")
-         ("\\.go\\'"         . "go build %f"))
+       '(("\\.c\\'"           . "gcc -Wall -lm -g -lpthread %f -o %n")
+         ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
+         ("\\.lua\\'"         . "lua %f")
+         ("\\.py\\'"          . "python %f")
+         ("\\.go\\'"          . "go build %f")
+         ("\\.ino\\'"         . "arduino --upload %f"))
        smart-compile-alist))
 
 
