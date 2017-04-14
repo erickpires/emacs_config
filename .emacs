@@ -328,7 +328,7 @@ With argument, do this that many times."
             ("\\(\\\\\\\\\\)"              #Xe106)
             ("\\(\\\\\\\\\\\\\\)"          #Xe107)
             ("\\({-\\)"                    #Xe108)
-            ("\\(\\[\\]\\)"                #Xe109)
+;;            ("\\(\\[\\]\\)"                #Xe109) Conflicting with parenthesis match mode
             ("\\(::\\)"                    #Xe10a)
             ("\\(:::\\)"                   #Xe10b)
             ("[^=]\\(:=\\)"                #Xe10c)
@@ -410,7 +410,7 @@ With argument, do this that many times."
             ("\\(<==\\)"                   #Xe158)
             ("\\(<=>\\)"                   #Xe159)
             ("\\(<=<\\)"                   #Xe15a)
-            ("\\(<>\\)"                    #Xe15b)
+;;            ("\\(<>\\)"                    #Xe15b) Conflicting with parenthesis match mode
             ("[^-=]\\(<<\\)"               #Xe15c)
             ("\\(<<-\\)"                   #Xe15d)
             ("\\(<<=\\)"                   #Xe15e)
