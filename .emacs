@@ -446,3 +446,12 @@ With argument, do this that many times."
 (add-hook 'prog-mode-hook
           #'add-fira-code-symbol-keywords)
 (put 'downcase-region 'disabled nil)
+
+
+(defun template ()
+  "My template"
+  (interactive )
+  (let (filename))
+  (setq filename (read-file-name "File: "))
+  (shell-command (concat "template -r " filename))
+  (find-file filename))
