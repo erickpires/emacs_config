@@ -447,7 +447,9 @@ With argument, do this that many times."
           #'add-fira-code-symbol-keywords)
 (put 'downcase-region 'disabled nil)
 
-
+;;
+;; Template
+;;
 (defun template ()
   "My template"
   (interactive )
@@ -455,3 +457,8 @@ With argument, do this that many times."
   (setq filename (read-file-name "File: "))
   (shell-command (concat "template -r " filename))
   (find-file filename))
+
+;;
+;; Git
+;;
+(defalias 'git 'magit-status)
