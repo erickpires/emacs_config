@@ -13,6 +13,7 @@
    [default default default italic underline success warning error])
  '(ccm-recenter-at-end-of-file t)
  '(ccm-vpos-init (quote (round (window-text-height) 2)))
+ '(company-irony-ignore-case t)
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
@@ -152,7 +153,7 @@ With argument, do this that many times."
 ;;
 (require 'multiple-cursors)
 
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C-c C-l") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
@@ -160,23 +161,24 @@ With argument, do this that many times."
 ;;
 ;; Auto-complete
 ;;
-(require 'auto-complete)
-;; dirty fix for having AC everywhere
-(define-globalized-minor-mode real-global-auto-complete-mode
-  auto-complete-mode (lambda ()
-                       (if (not (minibufferp (current-buffer)))
-                         (auto-complete-mode 1))
-                       ))
-(real-global-auto-complete-mode t)
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-show-menu-immediately-on-auto-complete t)
+;; (require 'auto-complete)
+;; ;; dirty fix for having AC everywhere
+;; (define-globalized-minor-mode real-global-auto-complete-mode
+;;   auto-complete-mode (lambda ()
+;;                        (if (not (minibufferp (current-buffer)))
+;;                          (auto-complete-mode 1))
+;;                        ))
+;; (real-global-auto-complete-mode t)
+;; (require 'auto-complete-config)
+;; (ac-config-default)
+;; (setq ac-show-menu-immediately-on-auto-complete t)
 
+;;
 ;; Starts Emacs maximized
+;;
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (split-window-horizontally)
-(set-frame-font "Fira Code 12" nil t)
 
 (setq scroll-step 1)
 
@@ -212,18 +214,25 @@ With argument, do this that many times."
 ;;
 ;; C lang
 ;;
-(autoload 'turn-on-ctags-auto-update-mode "ctags-update" "turn on 'ctags-auto-update-mode'." t)
-(add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
-
+(require 'cc-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'c-mode-common-hook #'company-mode)
-;; (setq company-backends (delete 'company-semantic company-backends))
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
-;; (add-to-list 'company-backends 'company-c-headers)
+
+(autoload 'turn-on-ctags-auto-update-mode
+  "ctags-update"
+  "turn on 'ctags-auto-update-mode'." t)
+
+(add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
+(define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
 
 
 (add-hook 'c-mode-common-hook
           (lambda () (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
+
+;; Comment with '//' instead of '/**/'
 (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
                                         comment-end   "")))
 
@@ -268,7 +277,7 @@ With argument, do this that many times."
 (add-hook 'prog-mode-hook
     (lambda ()
       (font-lock-add-keywords nil
-        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\)" 1 font-lock-warning-face t)))))
+        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|WARNING\\)" 1 font-lock-warning-face t)))))
 
 
 ;;
@@ -304,7 +313,7 @@ With argument, do this that many times."
 ;;
 ;; Fira code hack for emacs
 ;;
-
+(set-frame-font "Fira Code 12" nil t)
 ;; This works when using emacs --daemon + emacsclient
 (add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
 ;; This works when using emacs without server/client
@@ -436,3 +445,4 @@ With argument, do this that many times."
 
 (add-hook 'prog-mode-hook
           #'add-fira-code-symbol-keywords)
+(put 'downcase-region 'disabled nil)
