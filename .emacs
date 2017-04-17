@@ -20,7 +20,7 @@
     ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -132,7 +132,10 @@ With argument, do this that many times."
 (global-set-key (kbd "C-S-v") 'yank)
 
 ;; Switch current buffer to other window
-(global-set-key (kbd "C-S-x b") (lambda () (interactive) (switch-to-buffer-other-window (current-buffer))))
+(global-set-key (kbd "C-S-x b")
+                (lambda ()
+                  (interactive)
+                  (switch-to-buffer-other-window (current-buffer))))
 
 ;;
 ;; Center cursor
@@ -173,6 +176,13 @@ With argument, do this that many times."
 ;; (ac-config-default)
 ;; (setq ac-show-menu-immediately-on-auto-complete t)
 
+
+;;
+;; Company
+;;
+(add-hook 'prog-mode-hook #'company-mode)
+(define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+
 ;;
 ;; Starts Emacs maximized
 ;;
@@ -206,9 +216,7 @@ With argument, do this that many times."
 (require 'rust-mode)
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
-(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
 
 ;;
@@ -217,36 +225,51 @@ With argument, do this that many times."
 (require 'cc-mode)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c-mode-common-hook #'company-mode)
 
 (autoload 'turn-on-ctags-auto-update-mode
   "ctags-update"
   "turn on 'ctags-auto-update-mode'." t)
 
 (add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
-(define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
-
+;; NOTE: For some reason c-mode is not getting this key-binding from
+;; prog-mode
+(define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
 
 (add-hook 'c-mode-common-hook
-          (lambda () (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
+          (lambda ()
+            (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
 
 ;; Comment with '//' instead of '/**/'
-(add-hook 'c-mode-hook (lambda () (setq comment-start "//"
-                                        comment-end   "")))
+(add-hook 'c-mode-hook (lambda ()
+                         (setq comment-start "//"
+                               comment-end   "")))
 
 ;;
 ;; Python lang
 ;;
-(elpy-enable)
-(add-hook 'c-mode-common-hook
-          (lambda () (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
+(add-hook 'python-mode-hook 'elpy-enable)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (add-to-list 'company-backends 'company-jedi)))
 
 ;;
 ;; Compilation
 ;;
 (require 'smart-compile)
+(setq compilation-ask-about-save nil)        ;; I'm not scared of saving everything.
+(setq compilation-scroll-output 'next-error) ;; Stop on the first error.
+(setq compilation-skip-threshold 2)          ;; Don't stop on info or warnings.
+
 (setq smart-compile-alist
       (append
        '(("\\.c\\'"           . "gcc -Wall -lm -g -lpthread %f -o %n")
@@ -257,13 +280,6 @@ With argument, do this that many times."
          ("\\.ino\\'"         . "arduino --upload %f"))
        smart-compile-alist))
 
-
-;; I'm not scared of saving everything.
-(setq compilation-ask-about-save nil)
-;; Stop on the first error.
-(setq compilation-scroll-output 'next-error)
-;; Don't stop on info or warnings.
-(setq compilation-skip-threshold 2)
 
 ;;
 ;; Clean whitespace when saving
