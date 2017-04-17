@@ -155,27 +155,10 @@ With argument, do this that many times."
 ;; Multiple cursors
 ;;
 (require 'multiple-cursors)
-
 (global-set-key (kbd "C-c C-l") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;;
-;; Auto-complete
-;;
-;; (require 'auto-complete)
-;; ;; dirty fix for having AC everywhere
-;; (define-globalized-minor-mode real-global-auto-complete-mode
-;;   auto-complete-mode (lambda ()
-;;                        (if (not (minibufferp (current-buffer)))
-;;                          (auto-complete-mode 1))
-;;                        ))
-;; (real-global-auto-complete-mode t)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
-;; (setq ac-show-menu-immediately-on-auto-complete t)
-
 
 ;;
 ;; Company
@@ -184,16 +167,7 @@ With argument, do this that many times."
 (define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
 ;;
-;; Starts Emacs maximized
-;;
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-(split-window-horizontally)
-
-(setq scroll-step 1)
-
-;;
-;; Identation
+;; Identation and code style
 ;;
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -280,7 +254,6 @@ With argument, do this that many times."
          ("\\.ino\\'"         . "arduino --upload %f"))
        smart-compile-alist))
 
-
 ;;
 ;; Clean whitespace when saving
 ;;
@@ -289,11 +262,10 @@ With argument, do this that many times."
 ;;
 ;; Highlight especial words
 ;;
-;; (set-face-underline 'font-lock-warning-face "yellow")
 (add-hook 'prog-mode-hook
     (lambda ()
       (font-lock-add-keywords nil
-        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|WARNING\\)" 1 font-lock-warning-face t)))))
+        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|README\\|WARNING\\)" 1 font-lock-warning-face t)))))
 
 
 ;;
@@ -308,6 +280,9 @@ With argument, do this that many times."
 ;;
 ;; Interface configs
 ;;
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(split-window-horizontally)
+(setq scroll-step 1)
 (tool-bar-mode -1)                              ;; No toolbar
 (menu-bar-mode -1)                              ;; No menubar
 (global-hl-line-mode 1)                         ;; Highlight current line
@@ -320,7 +295,6 @@ With argument, do this that many times."
 (setq read-buffer-completion-ignore-case 't)    ;; Ignore case when completing buffer names
 (setq-default case-fold-search t)               ;; Search is case sensitive
 (defalias 'yes-or-no-p 'y-or-n-p)               ;; y/n instead of yes/no
-
 
 (global-linum-mode 1)
 (setq linum-format "%d ")
