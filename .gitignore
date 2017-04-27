@@ -1,0 +1,11 @@
+session.*
+tramp
+url/
+auto-save-list/*
+*.~undo-tree~
+eshell/
+network-security.data
+*.desktop*
+ac-comphist.dat
+history
+ido*
