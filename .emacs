@@ -17,10 +17,10 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -251,7 +251,8 @@ With argument, do this that many times."
          ("\\.lua\\'"         . "lua %f")
          ("\\.py\\'"          . "python %f")
          ("\\.go\\'"          . "go build %f")
-         ("\\.ino\\'"         . "arduino --upload %f"))
+         ("\\.ino\\'"         . "arduino --upload %f")
+         ("\\.pde\\'"         . "arduino --upload %f"))
        smart-compile-alist))
 
 ;;
@@ -452,3 +453,4 @@ With argument, do this that many times."
 ;; Git
 ;;
 (defalias 'git 'magit-status)
+(put 'upcase-region 'disabled nil)
