@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-tomorrow color-theme-tango base16-theme arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -538,3 +538,48 @@ the actual beginning of the line"
   (move-beginning-of-line 1)
   (delete-region (region-beginning) (region-end)))
 (global-set-key (kbd "C-c d") 'delete-line)
+
+
+;;
+;; Transpose windows
+;;
+;; NOTE(erick): Copied from https://github.com/bbatsov/crux/blob/master/crux.el
+;; modified from https://www.emacswiki.org/emacs/TransposeWindows
+(defun crux-transpose-windows (arg)
+  "Transpose the buffers shown in two windows.
+Prefix ARG determines if the current windows buffer is swapped
+with the next or previous window, and the number of
+transpositions to execute in sequence."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+            (next-win (window-buffer (funcall selector))))
+        (set-window-buffer (selected-window) next-win)
+        (set-window-buffer (funcall selector) this-win)
+        (select-window (funcall selector)))
+      (setq arg (if (cl-plusp arg) (1- arg) (1+ arg))))))
+(global-set-key (kbd "C-x 4 t") 'crux-transpose-windows)
+
+;;
+;; Comment line or region
+;;
+;; NOTE(erick): Copied from https://github.com/bbatsov/crux/blob/master/crux.el
+(defun crux-get-positions-of-line-or-region ()
+  "Return positions (beg . end) of the current line or region."
+  (let (beg end)
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (cons beg end)))
+
+(defun comment-line-or-region ()
+  ""
+  (interactive)
+  (pcase-let* ((origin (point))
+               (`(,beg . ,end) (crux-get-positions-of-line-or-region)))
+    (comment-or-uncomment-region beg end)))
+(global-set-key (kbd "M-;") 'comment-line-or-region)
