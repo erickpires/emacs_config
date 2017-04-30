@@ -17,10 +17,10 @@
  '(custom-enabled-themes (quote (tango-dark)))
  '(custom-safe-themes
    (quote
-    ("84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
+    ("093b2a26030dcd576cad4e59b5d804bc0496e56f4e2659e8900b4814279c3402" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "f78de13274781fbb6b01afd43327a4535438ebaeec91d93ebdbba1e3fba34d3c" default)))
  '(package-selected-packages
    (quote
-    (smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(save-place t)
  '(show-paren-mode t)
  '(window-divider-default-places t))
@@ -113,6 +113,7 @@ With argument, do this that many times."
         (concat "\\(\\s-*\\)" "\\(:\\)\\|\\(=\\)\\|\\(=>\\)") 1 1))
 
 (global-set-key (kbd "C-c C-a") 'my_align)
+(global-set-key (kbd "C-c C-c C-a") 'align-regexp)
 
 ;;
 ;; Expand region
@@ -448,9 +449,44 @@ With argument, do this that many times."
   (setq filename (read-file-name "File: "))
   (shell-command (concat "template -r " filename))
   (find-file filename))
+(global-set-key (kbd "C-x t") 'template)
 
 ;;
 ;; Git
 ;;
 (defalias 'git 'magit-status)
 (put 'upcase-region 'disabled nil)
+
+;;
+;; Smarter move to beginning of line
+;;
+(defun smarter-move-beginning-of-line (arg)
+  "Toggles between moving the cursor to the
+first non-whitespace char in the line and
+the actual beginning of the line"
+  (interactive "^p")
+  (setq arg (or arg 1))
+
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+(global-set-key (kbd "C-a") 'smarter-move-beginning-of-line)
+(global-set-key (kbd "<home>") 'smarter-move-beginning-of-line)
+
+
+;;
+;; Delete line
+;;
+(defun delete-line ()
+  "Deletes the line at the cursor"
+  (interactive)
+  (move-end-of-line 1)
+  (set-mark (point))
+  (move-beginning-of-line 1)
+  (delete-region (region-beginning) (region-end)))
+(global-set-key (kbd "C-c d") 'delete-line)
