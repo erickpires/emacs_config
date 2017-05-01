@@ -314,8 +314,10 @@ With argument, do this that many times."
 ;;
 (add-hook 'prog-mode-hook
     (lambda ()
-      (font-lock-add-keywords nil
-        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|README\\|WARNING\\)" 1 font-lock-warning-face t)))))
+      (font-lock-add-keywords
+       nil
+       '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|README\\|WARNING\\)"
+          1 font-lock-warning-face t)))))
 
 
 ;;
@@ -346,9 +348,12 @@ With argument, do this that many times."
 (setq-default case-fold-search t)               ;; Search is case sensitive
 (defalias 'yes-or-no-p 'y-or-n-p)               ;; y/n instead of yes/no
 
-(global-linum-mode 1)
-(setq linum-format "%d ")
-(smart-cursor-color-mode t)
+(global-auto-revert-mode t)                     ;; Update buffers when files change in disk
+
+(global-linum-mode 1)                           ;; Show line numbers
+(setq linum-format "%d ")                       ;; Line numbers format
+
+(smart-cursor-color-mode t)                     ;; Set cursor color to text color
 
 ;;
 ;; Fira code hack for emacs
