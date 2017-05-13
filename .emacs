@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -137,14 +137,18 @@ With argument, do this that many times."
 (global-set-key (read-kbd-macro "<C-delete>") 'delete-word)
 (global-set-key (read-kbd-macro "<C-backspace>") 'backward-delete-word)
 
-
+;;
+;; Interactively Do Things
+;;
 (require 'ido)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 (ido-mode t)
 
+;; Stops IDO from searching in other paths when the
+;; file doesn't exists in the current path
+(setq ido-auto-merge-work-directories-length -1)
 
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
-(setq neo-smart-open t)
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)
@@ -354,6 +358,9 @@ With argument, do this that many times."
 (setq linum-format "%d ")                       ;; Line numbers format
 
 (smart-cursor-color-mode t)                     ;; Set cursor color to text color
+
+(setq initial-scratch-message
+      ";; Present day.\n;; Present time.\n;; Hahahahaha.\n\n")
 
 ;;
 ;; Fira code hack for emacs
@@ -588,3 +595,9 @@ transpositions to execute in sequence."
                (`(,beg . ,end) (crux-get-positions-of-line-or-region)))
     (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "M-;") 'comment-line-or-region)
+
+;;
+;; Move parens
+;;
+(global-set-key (kbd "C-S-p") 'backward-list)
+(global-set-key (kbd "C-S-n") 'forward-list)
