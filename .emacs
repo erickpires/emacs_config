@@ -240,7 +240,8 @@ With argument, do this that many times."
 ;; Arduino
 ;;
 
-;; If you installed this package from without MELPA, you may
+(setenv "ARDUINO_HOME" "/usr/share/arduino")
+(put 'arduino-mode 'derived-mode-parent 'prog-mode)
 (require 'company-arduino)
 
 ;; Configuration for irony.el
@@ -267,10 +268,13 @@ With argument, do this that many times."
 ;; Activate irony-mode on arduino-mode
 (add-hook 'arduino-mode-hook 'irony-mode)
 
-(add-hook 'python-mode-hook
+(add-hook 'arduino-mode-hook
           (lambda ()
             (add-to-list 'company-backends 'company-irony)
             (add-to-list 'company-backends 'company-c-headers)))
+
+(add-hook 'arduino-mode-hook
+          (lambda () (run-hooks 'prog-mode-hook)))
 
 
 ;;
