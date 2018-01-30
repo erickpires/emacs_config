@@ -5,16 +5,26 @@
       '(
         backward-delete-word
         beginning-of-buffer
+        c-electric-colon
+        c-electric-paren
+        c-electric-semi&comma
+        c-electric-star
         ccm-mwheel-scroll
         company-indent-or-complete-common
+        electric-newline-and-maybe-indent
+        electric-pair-delete-pair
         end-of-buffer
         hungry-delete-backward
         hungry-delete-forward
         kill-region
         next-error
+        smarter-move-beginning-of-line
+        undo-tree-visualize
+        upcase-region
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        cargo-process-build
         cargo-process-run
         ))
