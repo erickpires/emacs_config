@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
