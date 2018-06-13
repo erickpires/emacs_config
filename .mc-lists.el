@@ -5,6 +5,7 @@
       '(
         backward-delete-word
         beginning-of-buffer
+        c-electric-brace
         c-electric-colon
         c-electric-paren
         c-electric-semi&comma
@@ -18,6 +19,7 @@
         hungry-delete-forward
         kill-region
         next-error
+        scroll-right
         smarter-move-beginning-of-line
         undo-tree-visualize
         upcase-region
