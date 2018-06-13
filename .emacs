@@ -112,7 +112,7 @@
 ;;
 ;; Theme
 ;;
-;; (load-theme 'monokai t)
+(set-frame-font "Monaco 12" nil t)
 (color-theme-sanityinc-tomorrow-eighties)
 
 ;;
@@ -182,9 +182,10 @@ With argument, do this that many times."
 ;; Undo / Redo
 ;;
 (require 'undo-tree)
-(global-undo-tree-mode 1)
+;; (global-undo-tree-mode)  There is a bug in which emacs fails to open when this is set
+(defalias 'undo ''undo-tree-undo)
 (defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'undo)
+(global-set-key (kbd "C-z") 'undo-tree-undo)
 (global-set-key (kbd "C-S-z") 'redo)
 (global-set-key (kbd "C-y") 'redo)
 (global-set-key (kbd "C-S-v") 'yank)
@@ -269,12 +270,12 @@ With argument, do this that many times."
 (add-hook 'arduino-mode-hook 'irony-mode)
 
 (add-hook 'arduino-mode-hook
-          (lambda ()
-            (add-to-list 'company-backends 'company-irony)
-            (add-to-list 'company-backends 'company-c-headers)))
+      (lambda ()
+        (add-to-list 'company-backends 'company-irony)
+        (add-to-list 'company-backends 'company-c-headers)))
 
 (add-hook 'arduino-mode-hook
-          (lambda () (run-hooks 'prog-mode-hook)))
+      (lambda () (run-hooks 'prog-mode-hook)))
 
 
 ;;
@@ -305,13 +306,13 @@ With argument, do this that many times."
 (define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
 
 (add-hook 'c-mode-common-hook
-          (lambda ()
-            (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
+      (lambda ()
+        (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
 
 ;; Comment with '//' instead of '/**/'
 (add-hook 'c-mode-hook (lambda ()
-                         (setq comment-start "//"
-                               comment-end   "")))
+             (setq comment-start "//"
+                   comment-end   "")))
 
 ;;
 ;; Python lang
@@ -322,12 +323,12 @@ With argument, do this that many times."
 (setq jedi:complete-on-dot t)
 
 (add-hook 'python-mode-hook
-          (lambda ()
-            (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
+      (lambda ()
+        (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
 
 (add-hook 'python-mode-hook
-          (lambda ()
-            (add-to-list 'company-backends 'company-jedi)))
+      (lambda ()
+        (add-to-list 'company-backends 'company-jedi)))
 
 ;;
 ;; Compilation
@@ -340,12 +341,12 @@ With argument, do this that many times."
 (setq smart-compile-alist
       (append
        '(("\\.c\\'"           . "gcc -Wall -lm -g -lpthread %f -o %n")
-         ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
-         ("\\.lua\\'"         . "lua %f")
-         ("\\.py\\'"          . "python %f")
-         ("\\.go\\'"          . "go build %f")
-         ("\\.ino\\'"         . "arduino --upload %f")
-         ("\\.pde\\'"         . "arduino --upload %f"))
+     ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
+     ("\\.lua\\'"         . "lua %f")
+     ("\\.py\\'"          . "python %f")
+     ("\\.go\\'"          . "go build %f")
+     ("\\.ino\\'"         . "arduino --upload %f")
+     ("\\.pde\\'"         . "arduino --upload %f"))
        smart-compile-alist))
 
 ;;
@@ -361,7 +362,7 @@ With argument, do this that many times."
       (font-lock-add-keywords
        nil
        '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|README\\|WARNING\\)"
-          1 font-lock-warning-face t)))))
+      1 font-lock-warning-face t)))))
 
 
 ;;
@@ -402,141 +403,7 @@ With argument, do this that many times."
 (setq initial-scratch-message
       ";; Present day.\n;; Present time.\n;; Hahahahaha.\n\n")
 
-;;
-;; Fira code hack for emacs
-;;
-(set-frame-font "Fira Code 12" nil t)
 ;; This works when using emacs --daemon + emacsclient
-(add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
-;; This works when using emacs without server/client
-(set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
-;; I haven't found one statement that makes both of the above situations work, so I use both for now
-
-(defconst fira-code-font-lock-keywords-alist
-  (mapcar (lambda (regex-char-pair)
-            `(,(car regex-char-pair)
-              (0 (prog1 ()
-                   (compose-region (match-beginning 1)
-                                   (match-end 1)
-                                   ;; The first argument to concat is a string containing a literal tab
-                                   ,(concat "	" (list (decode-char 'ucs (cadr regex-char-pair)))))))))
-          '(("\\(www\\)"                   #Xe100)
-            ("[^/]\\(\\*\\*\\)[^/]"        #Xe101)
-            ("\\(\\*\\*\\*\\)"             #Xe102)
-            ("\\(\\*\\*/\\)"               #Xe103)
-            ("\\(\\*>\\)"                  #Xe104)
-            ("[^*]\\(\\*/\\)"              #Xe105)
-            ("\\(\\\\\\\\\\)"              #Xe106)
-            ("\\(\\\\\\\\\\\\\\)"          #Xe107)
-            ("\\({-\\)"                    #Xe108)
-;;            ("\\(\\[\\]\\)"                #Xe109) Conflicting with parenthesis match mode
-            ("\\(::\\)"                    #Xe10a)
-            ("\\(:::\\)"                   #Xe10b)
-            ("[^=]\\(:=\\)"                #Xe10c)
-            ("\\(!!\\)"                    #Xe10d)
-            ("\\(!=\\)"                    #Xe10e)
-            ("\\(!==\\)"                   #Xe10f)
-            ("\\(-}\\)"                    #Xe110)
-            ("\\(--\\)"                    #Xe111)
-            ("\\(---\\)"                   #Xe112)
-            ("\\(-->\\)"                   #Xe113)
-            ("[^-]\\(->\\)"                #Xe114)
-            ("\\(->>\\)"                   #Xe115)
-            ("\\(-<\\)"                    #Xe116)
-            ("\\(-<<\\)"                   #Xe117)
-            ("\\(-~\\)"                    #Xe118)
-            ("\\(#{\\)"                    #Xe119)
-            ("\\(#\\[\\)"                  #Xe11a)
-            ("\\(##\\)"                    #Xe11b)
-            ("\\(###\\)"                   #Xe11c)
-            ("\\(####\\)"                  #Xe11d)
-            ("\\(#(\\)"                    #Xe11e)
-            ("\\(#\\?\\)"                  #Xe11f)
-            ("\\(#_\\)"                    #Xe120)
-            ("\\(#_(\\)"                   #Xe121)
-            ("\\(\\.-\\)"                  #Xe122)
-            ("\\(\\.=\\)"                  #Xe123)
-            ("\\(\\.\\.\\)"                #Xe124)
-            ("\\(\\.\\.<\\)"               #Xe125)
-            ("\\(\\.\\.\\.\\)"             #Xe126)
-            ("\\(\\?=\\)"                  #Xe127)
-            ("\\(\\?\\?\\)"                #Xe128)
-            ("\\(;;\\)"                    #Xe129)
-            ("\\(/\\*\\)"                  #Xe12a)
-            ("\\(/\\*\\*\\)"               #Xe12b)
-            ("\\(/=\\)"                    #Xe12c)
-            ("\\(/==\\)"                   #Xe12d)
-            ("\\(/>\\)"                    #Xe12e)
-            ("\\(//\\)"                    #Xe12f)
-            ("\\(///\\)"                   #Xe130)
-            ("\\(&&\\)"                    #Xe131)
-            ("\\(||\\)"                    #Xe132)
-            ("\\(||=\\)"                   #Xe133)
-            ("[^|]\\(|=\\)"                #Xe134)
-            ("\\(|>\\)"                    #Xe135)
-            ("\\(\\^=\\)"                  #Xe136)
-            ("\\(\\$>\\)"                  #Xe137)
-            ("\\(\\+\\+\\)"                #Xe138)
-            ("\\(\\+\\+\\+\\)"             #Xe139)
-            ("\\(\\+>\\)"                  #Xe13a)
-            ("\\(=:=\\)"                   #Xe13b)
-            ("[^!/]\\(==\\)[^>]"           #Xe13c)
-            ("\\(===\\)"                   #Xe13d)
-            ("\\(==>\\)"                   #Xe13e)
-            ("[^=]\\(=>\\)"                #Xe13f)
-            ("\\(=>>\\)"                   #Xe140)
-            ("\\(<=\\)"                    #Xe141)
-            ("\\(=<<\\)"                   #Xe142)
-            ("\\(=/=\\)"                   #Xe143)
-            ("\\(>-\\)"                    #Xe144)
-            ("\\(>=\\)"                    #Xe145)
-            ("\\(>=>\\)"                   #Xe146)
-            ("[^-=]\\(>>\\)"               #Xe147)
-            ("\\(>>-\\)"                   #Xe148)
-            ("\\(>>=\\)"                   #Xe149)
-            ("\\(>>>\\)"                   #Xe14a)
-            ("\\(<\\*\\)"                  #Xe14b)
-            ("\\(<\\*>\\)"                 #Xe14c)
-            ("\\(<|\\)"                    #Xe14d)
-            ("\\(<|>\\)"                   #Xe14e)
-            ("\\(<\\$\\)"                  #Xe14f)
-            ("\\(<\\$>\\)"                 #Xe150)
-            ("\\(<!--\\)"                  #Xe151)
-            ("\\(<-\\)"                    #Xe152)
-            ("\\(<--\\)"                   #Xe153)
-            ("\\(<->\\)"                   #Xe154)
-            ("\\(<\\+\\)"                  #Xe155)
-            ("\\(<\\+>\\)"                 #Xe156)
-            ("\\(<=\\)"                    #Xe157)
-            ("\\(<==\\)"                   #Xe158)
-            ("\\(<=>\\)"                   #Xe159)
-            ("\\(<=<\\)"                   #Xe15a)
-;;            ("\\(<>\\)"                    #Xe15b) Conflicting with parenthesis match mode
-            ("[^-=]\\(<<\\)"               #Xe15c)
-            ("\\(<<-\\)"                   #Xe15d)
-            ("\\(<<=\\)"                   #Xe15e)
-            ("\\(<<<\\)"                   #Xe15f)
-            ("\\(<~\\)"                    #Xe160)
-            ("\\(<~~\\)"                   #Xe161)
-            ("\\(</\\)"                    #Xe162)
-            ("\\(</>\\)"                   #Xe163)
-            ("\\(~@\\)"                    #Xe164)
-            ("\\(~-\\)"                    #Xe165)
-            ("\\(~=\\)"                    #Xe166)
-            ("\\(~>\\)"                    #Xe167)
-            ("[^<]\\(~~\\)"                #Xe168)
-            ("\\(~~>\\)"                   #Xe169)
-            ("\\(%%\\)"                    #Xe16a)
-           ;; ("\\(x\\)"                   #Xe16b) This ended up being hard to do properly so i'm leaving it out.
-            ("[^:=]\\(:\\)[^:=]"           #Xe16c)
-            ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
-            ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
-
-(defun add-fira-code-symbol-keywords ()
-  (font-lock-add-keywords nil fira-code-font-lock-keywords-alist))
-
-(add-hook 'prog-mode-hook
-          #'add-fira-code-symbol-keywords)
 (put 'downcase-region 'disabled nil)
 
 ;;
@@ -606,10 +473,10 @@ transpositions to execute in sequence."
   (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
     (while (/= arg 0)
       (let ((this-win (window-buffer))
-            (next-win (window-buffer (funcall selector))))
-        (set-window-buffer (selected-window) next-win)
-        (set-window-buffer (funcall selector) this-win)
-        (select-window (funcall selector)))
+        (next-win (window-buffer (funcall selector))))
+    (set-window-buffer (selected-window) next-win)
+    (set-window-buffer (funcall selector) this-win)
+    (select-window (funcall selector)))
       (setq arg (if (cl-plusp arg) (1- arg) (1+ arg))))))
 (global-set-key (kbd "C-x 4 t") 'crux-transpose-windows)
 
@@ -621,10 +488,10 @@ transpositions to execute in sequence."
   "Return positions (beg . end) of the current line or region."
   (let (beg end)
     (if (and mark-active (> (point) (mark)))
-        (exchange-point-and-mark))
+    (exchange-point-and-mark))
     (setq beg (line-beginning-position))
     (if mark-active
-        (exchange-point-and-mark))
+    (exchange-point-and-mark))
     (setq end (line-end-position))
     (cons beg end)))
 
@@ -632,7 +499,7 @@ transpositions to execute in sequence."
   ""
   (interactive)
   (pcase-let* ((origin (point))
-               (`(,beg . ,end) (crux-get-positions-of-line-or-region)))
+           (`(,beg . ,end) (crux-get-positions-of-line-or-region)))
     (comment-or-uncomment-region beg end)))
 (global-set-key (kbd "M-;") 'comment-line-or-region)
 
