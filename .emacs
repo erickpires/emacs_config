@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers company-arduino ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -84,6 +84,7 @@
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -197,6 +198,11 @@ With argument, do this that many times."
                   (switch-to-buffer-other-window (current-buffer))))
 
 ;;
+;; Capitalize
+;;
+(global-set-key (kbd "C-x C-S-C") 'capitalize-region)
+
+;;
 ;; Center cursor
 ;;
 (require 'centered-cursor-mode)
@@ -220,6 +226,11 @@ With argument, do this that many times."
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;;
+;; Auto-SudoEdit
+;;
+(require 'auto-sudoedit)
+(auto-sudoedit-mode 1)
+;;
 ;; Company
 ;;
 (add-hook 'prog-mode-hook #'company-mode)
@@ -241,41 +252,41 @@ With argument, do this that many times."
 ;; Arduino
 ;;
 
-(setenv "ARDUINO_HOME" "/usr/share/arduino")
-(put 'arduino-mode 'derived-mode-parent 'prog-mode)
-(require 'company-arduino)
+;; (setenv "ARDUINO_HOME" "/usr/share/arduino")
+;; (put 'arduino-mode 'derived-mode-parent 'prog-mode)
+;; (require 'company-arduino)
 
-;; Configuration for irony.el
-;; Add arduino's include options to irony-mode's variable.
-(add-hook 'irony-mode-hook 'company-arduino-turn-on)
+;; ;; Configuration for irony.el
+;; ;; Add arduino's include options to irony-mode's variable.
+;; (add-hook 'irony-mode-hook 'company-arduino-turn-on)
 
-;; Configuration for company-c-headers.el
-;; The `company-arduino-append-include-dirs' function appends
-;; Arduino's include directories to the default directories
-;; if `default-directory' is inside `company-arduino-home'. Otherwise
-;; just returns the default directories.
-;; Please change the default include directories accordingly.
+;; ;; Configuration for company-c-headers.el
+;; ;; The `company-arduino-append-include-dirs' function appends
+;; ;; Arduino's include directories to the default directories
+;; ;; if `default-directory' is inside `company-arduino-home'. Otherwise
+;; ;; just returns the default directories.
+;; ;; Please change the default include directories accordingly.
 
-(defun my-company-c-headers-get-system-path ()
-  "Return the system include path for the current buffer."
-  (let ((default '("/usr/include/" "/usr/local/include/")))
-    (company-arduino-append-include-dirs default t)))
-(setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
+;; (defun my-company-c-headers-get-system-path ()
+;;   "Return the system include path for the current buffer."
+;;   (let ((default '("/usr/include/" "/usr/local/include/")))
+;;     (company-arduino-append-include-dirs default t)))
+;; (setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
 
 
-(setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
-(autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+;; (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
+;; (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
 
-;; Activate irony-mode on arduino-mode
-(add-hook 'arduino-mode-hook 'irony-mode)
+;; ;; Activate irony-mode on arduino-mode
+;; (add-hook 'arduino-mode-hook 'irony-mode)
 
-(add-hook 'arduino-mode-hook
-      (lambda ()
-        (add-to-list 'company-backends 'company-irony)
-        (add-to-list 'company-backends 'company-c-headers)))
+;; (add-hook 'arduino-mode-hook
+;;       (lambda ()
+;;         (add-to-list 'company-backends 'company-irony)
+;;         (add-to-list 'company-backends 'company-c-headers)))
 
-(add-hook 'arduino-mode-hook
-      (lambda () (run-hooks 'prog-mode-hook)))
+;; (add-hook 'arduino-mode-hook
+;;       (lambda () (run-hooks 'prog-mode-hook)))
 
 
 ;;
@@ -344,9 +355,9 @@ With argument, do this that many times."
      ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
      ("\\.lua\\'"         . "lua %f")
      ("\\.py\\'"          . "python %f")
-     ("\\.go\\'"          . "go build %f")
-     ("\\.ino\\'"         . "arduino --upload %f")
-     ("\\.pde\\'"         . "arduino --upload %f"))
+     ;; ("\\.ino\\'"         . "arduino --upload %f")
+     ;; ("\\.pde\\'"         . "arduino --upload %f")
+     ("\\.go\\'"          . "go build %f"))
        smart-compile-alist))
 
 ;;
@@ -388,6 +399,7 @@ With argument, do this that many times."
 (mouse-wheel-mode t)                            ;; Mouse-wheel enabled
 (show-paren-mode 1)                             ;; Highlight parenthesis pairs
 (setq truncate-partial-width-windows nil)       ;; Don't truncate long lines
+(global-visual-line-mode t)                     ;; Better linewrapping
 (setq read-file-name-completion-ignore-case 't) ;; Ignore case when completing file names
 (setq read-buffer-completion-ignore-case 't)    ;; Ignore case when completing buffer names
 (setq-default case-fold-search t)               ;; Search is case sensitive
@@ -521,3 +533,26 @@ transpositions to execute in sequence."
     (css-mode "<style[^>]*>" "</style>")))
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
+
+;;
+;; Org mode
+;;
+(require 'ox-latex)
+(setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+
+;; Artigo Padrão
+(add-to-list 'org-latex-classes
+             '("article"
+               "\\documentclass{article}"
+               ("\\section{%s}" . "\\section*{%s}")))
+
+;; Monografia - DCC
+;; (add-to-list 'org-latex-classes
+;;              '("projetofinal-dcc"
+;;                "\\documentclass{projetofinal-dcc}"
+;;                ("\\chapter{%s}" . "\\chapter*{%s}")
+;;                ("\\section{%s}" . "\\section*{%s}")
+;;                ("\\subsection{%s}" . "\\subsection*{%s}")
+;;                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
