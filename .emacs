@@ -484,10 +484,8 @@ transpositions to execute in sequence."
 ;; slow when dealing with huge files. In which case Irony would be preferred.
 (eval-after-load 'company
   '(add-to-list 'company-backends '(
-                                    ;; company-irony
-                                    ;; company-irony-c-headers
-                                    company-clang
-                                    )))
+                                    company-irony
+                                    company-irony-c-headers)))
 (define-key c-mode-base-map (kbd "<C-tab>") #'company-clang)
 
 ;; NOTE: For some reason c-mode is not getting this key-binding from
