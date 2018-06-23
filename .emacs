@@ -232,12 +232,6 @@ With argument, do this that many times."
 (auto-sudoedit-mode 1)
 
 ;;
-;; Company
-;;
-(add-hook 'prog-mode-hook #'company-mode)
-(define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-
-;;
 ;; Identation and code style
 ;;
 (setq-default indent-tabs-mode nil)
@@ -248,125 +242,6 @@ With argument, do this that many times."
 
 (setq c-default-style "k&r")
 (electric-pair-mode)
-
-;;
-;; Arduino
-;;
-
-;; (setenv "ARDUINO_HOME" "/usr/share/arduino")
-;; (put 'arduino-mode 'derived-mode-parent 'prog-mode)
-;; (require 'company-arduino)
-
-;; ;; Configuration for irony.el
-;; ;; Add arduino's include options to irony-mode's variable.
-;; (add-hook 'irony-mode-hook 'company-arduino-turn-on)
-
-;; ;; Configuration for company-c-headers.el
-;; ;; The `company-arduino-append-include-dirs' function appends
-;; ;; Arduino's include directories to the default directories
-;; ;; if `default-directory' is inside `company-arduino-home'. Otherwise
-;; ;; just returns the default directories.
-;; ;; Please change the default include directories accordingly.
-
-;; (defun my-company-c-headers-get-system-path ()
-;;   "Return the system include path for the current buffer."
-;;   (let ((default '("/usr/include/" "/usr/local/include/")))
-;;     (company-arduino-append-include-dirs default t)))
-;; (setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
-
-
-;; (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
-;; (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
-
-;; ;; Activate irony-mode on arduino-mode
-;; (add-hook 'arduino-mode-hook 'irony-mode)
-
-;; (add-hook 'arduino-mode-hook
-;;       (lambda ()
-;;         (add-to-list 'company-backends 'company-irony)
-;;         (add-to-list 'company-backends 'company-c-headers)))
-
-;; (add-hook 'arduino-mode-hook
-;;       (lambda () (run-hooks 'prog-mode-hook)))
-
-
-;;
-;; Rust lang
-;;
-(require 'rust-mode)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-(setq company-tooltip-align-annotations t)
-
-;;
-;; C lang
-;;
-(require 'cc-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-
-;; NOTE(erick): company-clang is the best backend available. But it can be
-;; slow when dealing with huge files. In which case Irony would be preferred.
-(eval-after-load 'company
-  '(add-to-list 'company-backends '(
-                                    ;; company-irony
-                                    ;; company-irony-c-headers
-                                    company-clang
-                                    )))
-(define-key c-mode-base-map (kbd "<C-tab>") #'company-clang)
-
-;; NOTE: For some reason c-mode is not getting this key-binding from
-;; prog-mode
-(define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
-
-;; Clang flags.
-(add-hook 'c-mode-hook
-          (lambda () (setq company-clang-insert-arguments "-std=c11")))
-(add-hook 'c++-mode-hook
-          (lambda () (setq company-clang-insert-arguments "-std=c++17")))
-
-(add-hook 'c-mode-common-hook
-      (lambda ()
-        (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
-
-;; Comment with '//' instead of '/**/'
-(add-hook 'c-mode-hook (lambda ()
-             (setq comment-start "//"
-                   comment-end   "")))
-
-;;
-;; Python lang
-;;
-(add-hook 'python-mode-hook 'elpy-enable)
-
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
-
-(add-hook 'python-mode-hook
-      (lambda ()
-        (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
-
-(add-hook 'python-mode-hook
-      (lambda ()
-        (add-to-list 'company-backends 'company-jedi)))
-
-;;
-;; Compilation
-;;
-(require 'smart-compile)
-(setq compilation-ask-about-save nil)        ;; I'm not scared of saving everything.
-(setq compilation-scroll-output 'next-error) ;; Stop on the first error.
-(setq compilation-skip-threshold 2)          ;; Don't stop on info or warnings.
-
-(setq smart-compile-alist
-      (append
-       '(("\\.c\\'"           . "gcc -Wall -lm -g -lpthread %f -o %n")
-     ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
-     ("\\.lua\\'"         . "lua %f")
-     ("\\.py\\'"          . "python %f")
-     ("\\.go\\'"          . "go build %f"))
-       smart-compile-alist))
 
 ;;
 ;; Clean whitespace when saving
@@ -542,6 +417,114 @@ transpositions to execute in sequence."
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 
+
+;;
+;; Company
+;;
+(add-hook 'prog-mode-hook #'company-mode)
+(define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+
+;;
+;; Arduino
+;;
+
+;; (setenv "ARDUINO_HOME" "/usr/share/arduino")
+;; (put 'arduino-mode 'derived-mode-parent 'prog-mode)
+;; (require 'company-arduino)
+
+;; ;; Configuration for irony.el
+;; ;; Add arduino's include options to irony-mode's variable.
+;; (add-hook 'irony-mode-hook 'company-arduino-turn-on)
+
+;; ;; Configuration for company-c-headers.el
+;; ;; The `company-arduino-append-include-dirs' function appends
+;; ;; Arduino's include directories to the default directories
+;; ;; if `default-directory' is inside `company-arduino-home'. Otherwise
+;; ;; just returns the default directories.
+;; ;; Please change the default include directories accordingly.
+
+;; (defun my-company-c-headers-get-system-path ()
+;;   "Return the system include path for the current buffer."
+;;   (let ((default '("/usr/include/" "/usr/local/include/")))
+;;     (company-arduino-append-include-dirs default t)))
+;; (setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
+
+
+;; (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
+;; (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
+
+;; ;; Activate irony-mode on arduino-mode
+;; (add-hook 'arduino-mode-hook 'irony-mode)
+
+;; (add-hook 'arduino-mode-hook
+;;       (lambda ()
+;;         (add-to-list 'company-backends 'company-irony)
+;;         (add-to-list 'company-backends 'company-c-headers)))
+
+;; (add-hook 'arduino-mode-hook
+;;       (lambda () (run-hooks 'prog-mode-hook)))
+
+;;
+;; Rust lang
+;;
+(require 'rust-mode)
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'rust-mode-hook 'cargo-minor-mode)
+(setq company-tooltip-align-annotations t)
+
+;;
+;; C lang
+;;
+(require 'cc-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+
+;; NOTE(erick): company-clang is the best backend available. But it can be
+;; slow when dealing with huge files. In which case Irony would be preferred.
+(eval-after-load 'company
+  '(add-to-list 'company-backends '(
+                                    ;; company-irony
+                                    ;; company-irony-c-headers
+                                    company-clang
+                                    )))
+(define-key c-mode-base-map (kbd "<C-tab>") #'company-clang)
+
+;; NOTE: For some reason c-mode is not getting this key-binding from
+;; prog-mode
+(define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
+
+;; Clang flags.
+(add-hook 'c-mode-hook
+          (lambda () (setq company-clang-insert-arguments "-std=c11")))
+(add-hook 'c++-mode-hook
+          (lambda () (setq company-clang-insert-arguments "-std=c++17")))
+
+(add-hook 'c-mode-common-hook
+      (lambda ()
+        (define-key c-mode-base-map (kbd "C-c b") 'smart-compile)))
+
+;; Comment with '//' instead of '/**/'
+(add-hook 'c-mode-hook (lambda ()
+             (setq comment-start "//"
+                   comment-end   "")))
+
+;;
+;; Python lang
+;;
+(add-hook 'python-mode-hook 'elpy-enable)
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+(add-hook 'python-mode-hook
+      (lambda ()
+        (define-key python-mode-map (kbd "C-c b") 'smart-compile)))
+
+(add-hook 'python-mode-hook
+      (lambda ()
+        (add-to-list 'company-backends 'company-jedi)))
+
 ;;
 ;; Org mode
 ;;
@@ -564,3 +547,20 @@ transpositions to execute in sequence."
 ;;                ("\\section{%s}" . "\\section*{%s}")
 ;;                ("\\subsection{%s}" . "\\subsection*{%s}")
 ;;                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")))
+
+;;
+;; Compilation
+;;
+(require 'smart-compile)
+(setq compilation-ask-about-save nil)        ;; I'm not scared of saving everything.
+(setq compilation-scroll-output 'next-error) ;; Stop on the first error.
+(setq compilation-skip-threshold 2)          ;; Don't stop on info or warnings.
+
+(setq smart-compile-alist
+      (append
+       '(("\\.c\\'"           . "gcc -Wall -lm -g -lpthread %f -o %n")
+     ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
+     ("\\.lua\\'"         . "lua %f")
+     ("\\.py\\'"          . "python %f")
+     ("\\.go\\'"          . "go build %f"))
+       smart-compile-alist))
