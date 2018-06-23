@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers ctags-update markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -230,6 +230,7 @@ With argument, do this that many times."
 ;;
 (require 'auto-sudoedit)
 (auto-sudoedit-mode 1)
+
 ;;
 ;; Company
 ;;
@@ -305,16 +306,25 @@ With argument, do this that many times."
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
 
-(autoload 'turn-on-ctags-auto-update-mode
-  "ctags-update"
-  "turn on 'ctags-auto-update-mode'." t)
-
-(add-hook 'c-mode-common-hook  'turn-on-ctags-auto-update-mode)
+;; NOTE(erick): company-clang is the best backend available. But it can be
+;; slow when dealing with huge files. In which case Irony would be preferred.
 (eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+  '(add-to-list 'company-backends '(
+                                    ;; company-irony
+                                    ;; company-irony-c-headers
+                                    company-clang
+                                    )))
+(define-key c-mode-base-map (kbd "<C-tab>") #'company-clang)
+
 ;; NOTE: For some reason c-mode is not getting this key-binding from
 ;; prog-mode
 (define-key c-mode-base-map (kbd "TAB") #'company-indent-or-complete-common)
+
+;; Clang flags.
+(add-hook 'c-mode-hook
+          (lambda () (setq company-clang-insert-arguments "-std=c11")))
+(add-hook 'c++-mode-hook
+          (lambda () (setq company-clang-insert-arguments "-std=c++17")))
 
 (add-hook 'c-mode-common-hook
       (lambda ()
@@ -355,8 +365,6 @@ With argument, do this that many times."
      ("\\.[Cc]+[Pp]*\\'"  . "g++ -std=c++14 -Wall -g %f -o %n")
      ("\\.lua\\'"         . "lua %f")
      ("\\.py\\'"          . "python %f")
-     ;; ("\\.ino\\'"         . "arduino --upload %f")
-     ;; ("\\.pde\\'"         . "arduino --upload %f")
      ("\\.go\\'"          . "go build %f"))
        smart-compile-alist))
 
