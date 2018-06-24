@@ -279,6 +279,7 @@ With argument, do this that many times."
 (global-hl-line-mode 1)                         ;; Highlight current line
 (line-number-mode 1)                            ;; Show line-number in the mode line
 (column-number-mode 1)                          ;; Show column-number in the mode line
+(size-indication-mode)                          ;; Show file size
 (mouse-wheel-mode t)                            ;; Mouse-wheel enabled
 (show-paren-mode 1)                             ;; Highlight parenthesis pairs
 (setq truncate-partial-width-windows nil)       ;; Don't truncate long lines
