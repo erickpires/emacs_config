@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -290,7 +290,7 @@ With argument, do this that many times."
 
 (global-auto-revert-mode t)                     ;; Update buffers when files change in disk
 
-(global-linum-mode 1)                           ;; Show line numbers
+(global-display-line-numbers-mode t)                           ;; Show line numbers
 (setq linum-format "%d ")                       ;; Line numbers format
 
 (smart-cursor-color-mode t)                     ;; Set cursor color to text color
@@ -404,7 +404,12 @@ transpositions to execute in sequence."
 (global-set-key (kbd "C-S-p") 'backward-list)
 (global-set-key (kbd "C-S-n") 'forward-list)
 
-
+;;
+;; View Large Files
+;;
+(require 'vlf)
+(custom-set-variables '(vlf-tune-enabled nil))
+(setq vlf-application 'dont-ask)
 ;;
 ;; Multi-web modes
 ;;
