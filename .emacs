@@ -355,6 +355,10 @@ the actual beginning of the line"
   (delete-region (region-beginning) (region-end)))
 (global-set-key (kbd "C-c d") 'delete-line)
 
+;;
+;; Default major modes
+;;
+(setq-default major-mode 'text-mode)
 
 ;;
 ;; Transpose windows
