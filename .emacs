@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (avy org-bullets vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -68,6 +68,7 @@
      (340 . "#2790C3")
      (360 . "#66D9EF"))))
  '(vc-annotate-very-old-color nil)
+ '(vlf-tune-enabled nil)
  '(weechat-color-list
    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))
  '(window-divider-default-places t))
@@ -409,7 +410,7 @@ transpositions to execute in sequence."
 ;; View Large Files
 ;;
 (require 'vlf)
-(custom-set-variables '(vlf-tune-enabled nil))
+
 (setq vlf-application 'dont-ask)
 ;;
 ;; Multi-web modes
@@ -423,6 +424,11 @@ transpositions to execute in sequence."
 (setq mweb-filename-extensions '("php" "htm" "html" "ctp" "phtml" "php4" "php5"))
 (multi-web-global-mode 1)
 
+;;
+;; Avy
+;;
+(require 'avy)
+(global-set-key (kbd "C-:") 'avy-goto-char)
 
 ;;
 ;; Company
@@ -433,42 +439,7 @@ transpositions to execute in sequence."
 ;;
 ;; Arduino
 ;;
-
-;; (setenv "ARDUINO_HOME" "/usr/share/arduino")
-;; (put 'arduino-mode 'derived-mode-parent 'prog-mode)
-;; (require 'company-arduino)
-
-;; ;; Configuration for irony.el
-;; ;; Add arduino's include options to irony-mode's variable.
-;; (add-hook 'irony-mode-hook 'company-arduino-turn-on)
-
-;; ;; Configuration for company-c-headers.el
-;; ;; The `company-arduino-append-include-dirs' function appends
-;; ;; Arduino's include directories to the default directories
-;; ;; if `default-directory' is inside `company-arduino-home'. Otherwise
-;; ;; just returns the default directories.
-;; ;; Please change the default include directories accordingly.
-
-;; (defun my-company-c-headers-get-system-path ()
-;;   "Return the system include path for the current buffer."
-;;   (let ((default '("/usr/include/" "/usr/local/include/")))
-;;     (company-arduino-append-include-dirs default t)))
-;; (setq company-c-headers-path-system 'my-company-c-headers-get-system-path)
-
-
-;; (setq auto-mode-alist (cons '("\\.\\(pde\\|ino\\)$" . arduino-mode) auto-mode-alist))
-;; (autoload 'arduino-mode "arduino-mode" "Arduino editing mode." t)
-
-;; ;; Activate irony-mode on arduino-mode
-;; (add-hook 'arduino-mode-hook 'irony-mode)
-
-;; (add-hook 'arduino-mode-hook
-;;       (lambda ()
-;;         (add-to-list 'company-backends 'company-irony)
-;;         (add-to-list 'company-backends 'company-c-headers)))
-
-;; (add-hook 'arduino-mode-hook
-;;       (lambda () (run-hooks 'prog-mode-hook)))
+(add-to-list 'auto-mode-alist '("\\.\\(pde\\|ino\\)$" . c-mode))
 
 ;;
 ;; Rust lang
@@ -532,6 +503,9 @@ transpositions to execute in sequence."
 ;;
 ;; Org mode
 ;;
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 (require 'ox-latex)
 (setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
 (unless (boundp 'org-latex-classes)
