@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (avy org-bullets vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (deadgrep avy org-bullets vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -110,7 +110,7 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 (setq ispell-dictionary "english")
-
+(defalias 'correct 'flyspell-correct-word-before-point)
 ;;
 ;; Theme
 ;;
@@ -189,8 +189,8 @@ With argument, do this that many times."
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-z") 'undo-tree-undo)
 (global-set-key (kbd "C-S-z") 'redo)
-(global-set-key (kbd "C-y") 'redo)
 (global-set-key (kbd "C-S-v") 'yank)
+(global-set-key (kbd "C-y") 'yank)
 
 ;; Switch current buffer to other window
 (global-set-key (kbd "C-S-x b")
@@ -256,8 +256,17 @@ With argument, do this that many times."
     (lambda ()
       (font-lock-add-keywords
        nil
-       '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTE\\|HACK\\|README\\|WARNING\\)"
+       '(("\\<\\(FIXME\\|TODO\\|BUG\\|HACK\\|WARNING\\)"
       1 font-lock-warning-face t)))))
+
+;; TODO(erick): Choose another color for these words.
+(add-hook 'prog-mode-hook
+    (lambda ()
+      (font-lock-add-keywords
+       nil
+       '(("\\<\\(NOTE\\|README\\|ISSUE\\)"
+      1 font-lock-warning-face t)))))
+
 
 
 ;;
@@ -439,6 +448,15 @@ transpositions to execute in sequence."
 ;;
 (add-hook 'prog-mode-hook #'company-mode)
 (define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-dabbrev-downcase 0)
+(setq company-idle-delay 0)
+
+
+;;
+;;
+;;
+(require 'deadgrep)
+(global-set-key (kbd "<f3>") #'deadgrep)
 
 ;;
 ;; Arduino
@@ -465,8 +483,10 @@ transpositions to execute in sequence."
 ;; slow when dealing with huge files. In which case Irony would be preferred.
 (eval-after-load 'company
   '(add-to-list 'company-backends '(
+                                    ;; company-clang
                                     company-irony
-                                    company-irony-c-headers)))
+                                    company-irony-c-headers
+                                    )))
 (define-key c-mode-base-map (kbd "<C-tab>") #'company-clang)
 
 ;; NOTE: For some reason c-mode is not getting this key-binding from
