@@ -1,0 +1,88 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("____FILE_defined" variable (:constant-flag t) nil [34 50])
+            ("_IO_FILE" type
+               (:prototype t
+                :type "struct")
+                nil [54 70])
+            ("__FILE" type
+               (:typedef ("_IO_FILE" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [71 102]))          
+      :file "__FILE.h"
+      :pointmax 111
+      :fsize 110
+      :lastmodtime '(23274 6910)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("____FILE_defined" . ((number "1" 51 . 52)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("__FILE_defined" variable (:constant-flag t) nil [32 46])
+            ("_IO_FILE" type
+               (:prototype t
+                :type "struct")
+                nil [50 66])
+            ("FILE" type
+               (:typedef ("_IO_FILE" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [143 172]))          
+      :file "FILE.h"
+      :pointmax 181
+      :fsize 180
+      :lastmodtime '(23274 6910)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("__FILE_defined" . ((number "1" 47 . 48)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("____mbstate_t_defined" variable (:constant-flag t) nil [39 60])
+            ("__WINT_TYPE__" variable (:constant-flag t) nil [346 359])
+            ("__mbstate_t" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("__count" variable (:type "int") (reparse-symbol classsubparts) [437 449])
+                          ("__value" variable (:type ("" type
+                               (:members 
+                                  ( ("__wch" variable (:type "unsigned int") (reparse-symbol classsubparts) [466 486])
+                                    ("__wchb" variable
+                                       (:dereference 1
+                                        :type "char")
+                                        (reparse-symbol classsubparts) [491 506]))                                  
+                                :type "union")
+                                nil nil)) (reparse-symbol classsubparts) [452 519]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [418 556]))          
+      :file "__mbstate_t.h"
+      :pointmax 565
+      :fsize 564
+      :lastmodtime '(23274 6911)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("____mbstate_t_defined" . ((number "1" 61 . 62)))
+          ("__WINT_TYPE__" . ((UNSIGNED "unsigned" 360 . 368) (INT "int" 369 . 372)))
+          )
+))
+  :file "!sudo:root@time_traveller:!usr!include!bits!types!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

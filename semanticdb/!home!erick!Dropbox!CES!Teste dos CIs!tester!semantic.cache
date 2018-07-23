@@ -1,0 +1,130 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("serial.h" include nil nil [1 20])
+            ("serial.c" include nil nil [21 40])
+            ("int8" type
+               (:typedef ("char")
+                :type "typedef")
+                nil [86 104])
+            ("uint8" type
+               (:typedef ("byte" type (:type "class") nil nil)
+                :type "typedef")
+                nil [105 124])
+            ("int16" type
+               (:typedef ("short")
+                :type "typedef")
+                nil [125 145])
+            ("uint16" type
+               (:typedef ("unsigned short")
+                :type "typedef")
+                nil [146 176])
+            ("int32" type
+               (:typedef ("long")
+                :type "typedef")
+                nil [177 196])
+            ("uint32" type
+               (:typedef ("unsigned long")
+                :type "typedef")
+                nil [197 226])
+            ("nop" variable (:constant-flag t) nil [445 448])
+            ("setup" function (:type "void") nil [480 606])
+            ("print_str" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [623 633]))                  
+                :type "void")
+                nil [608 697])
+            ("input_or_output" function
+               (:arguments 
+                  ( ("c" variable (:type "char") (reparse-symbol arg-sub-list) [721 728]))                  
+                :type ("uint8" type (:type "class") nil nil))
+                nil [699 814])
+            ("set_ports" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type ("int8" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [831 841]))                  
+                :type "void")
+                nil [816 1457])
+            ("write_ports" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type ("int8" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1476 1486]))                  
+                :type "void")
+                nil [1459 2779])
+            ("unclock_ports" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2800 2810]))                  
+                :type "void")
+                nil [2781 4537])
+            ("clock_ports" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [4557 4567]))                  
+                :type "void")
+                nil [4540 7886])
+            ("check_pin" function
+               (:arguments 
+                  ( ("pin" variable (:type ("uint8" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8011 8021])
+                    ("expected" variable (:type "char") (reparse-symbol arg-sub-list) [8022 8036]))                  
+                :type ("int8" type (:type "class") nil nil))
+                nil [7996 8355])
+            ("check_ports" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [8374 8384]))                  
+                :type "void")
+                nil [8357 11073])
+            ("buffer" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :type ("int8" type (:type "class") nil nil))
+                nil [11075 11098])
+            ("read_16_bytes" function
+               (:arguments 
+                  ( ("to" variable
+                       (:pointer 1
+                        :type ("int8" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11118 11127]))                  
+                :type "void")
+                nil [11099 11223])
+            ("loop" function (:type "void") nil [11225 11692]))          
+      :file "tester.ino"
+      :pointmax 11693
+      :fsize 11692
+      :lastmodtime '(23317 28267 274242 351000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("nop" (spp-arg-list nil 448 . 450) . 
+              ((symbol "__asm__" 451 . 458) (VOLATILE "volatile" 459 . 467) (semantic-list "(\"nop\\n\\t\")" 467 . 478)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :file "serial.h"
+      :fsize 1220
+      :lastmodtime '(23317 28007 701706 347000))
+    (semanticdb-table "semanticdb-table"
+      :file "serial.c"
+      :fsize 2146
+      :lastmodtime '(23317 28007 701706 347000)))
+  :file "!home!erick!Dropbox!CES!Teste dos CIs!tester!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

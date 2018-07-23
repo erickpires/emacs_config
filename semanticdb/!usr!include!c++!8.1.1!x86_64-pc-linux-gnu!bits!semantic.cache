@@ -1,0 +1,24 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags nil
+      :file "c++config.h"
+      :pointmax 57257
+      :fsize 57256
+      :lastmodtime '(23313 8435 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :file "os_defines.h"
+      :fsize 2007
+      :lastmodtime '(23313 8435 0 0))
+    (semanticdb-table "semanticdb-table"
+      :file "cpu_defines.h"
+      :fsize 1333
+      :lastmodtime '(23313 8435 0 0)))
+  :file "!usr!include!c++!8.1.1!x86_64-pc-linux-gnu!bits!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

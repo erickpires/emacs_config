@@ -1,0 +1,153 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("stdint.h" include (:system-flag t) nil [40 59])
+            ("stdbool.h" include (:system-flag t) nil [60 80])
+            ("assert.h" include (:system-flag t) nil [81 100])
+            ("isize" type
+               (:typedef ("intptr_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [102 125])
+            ("int8" type
+               (:typedef ("int8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [126 148])
+            ("int16" type
+               (:typedef ("int16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [149 172])
+            ("int32" type
+               (:typedef ("int32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [173 196])
+            ("int64" type
+               (:typedef ("int64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [197 220])
+            ("usize" type
+               (:typedef ("size_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [222 249])
+            ("uint8" type
+               (:typedef ("uint8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [250 277])
+            ("uint16" type
+               (:typedef ("uint16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [278 306])
+            ("uint32" type
+               (:typedef ("uint32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [307 335])
+            ("uint64" type
+               (:typedef ("uint64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [336 364])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [365 391])
+            ("PinType" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("NON_SPECIAL" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [412 424])
+                          ("VCC" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [429 433])
+                          ("GND" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [438 442])
+                          ("NOT_CONNECTED" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [447 461]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [393 472])
+            ("Pin" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("number" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol classsubparts) [495 507])
+                          ("type" variable (:type ("PinType" type (:type "class") nil nil)) (reparse-symbol classsubparts) [512 525])
+                          ("label" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [530 542]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [474 549])
+            ("IC" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("n_pins" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol classsubparts) [572 584])
+                          ("name" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [589 600])
+                          ("code" variable
+                             (:pointer 1
+                              :type "char")
+                              (reparse-symbol classsubparts) [605 616])
+                          ("pins" variable
+                             (:pointer 1
+                              :type ("Pin" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [621 631]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [551 637])
+            ("ICList" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("data" variable
+                             (:pointer 1
+                              :type ("IC" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [660 669])
+                          ("count" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol classsubparts) [674 686])
+                          ("capacity" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol classsubparts) [691 706]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [639 716])
+            ("new_ICList" function (:type ("ICList" type (:type "class") nil nil)) nil [718 893])
+            ("add_to_ic_list" function
+               (:arguments 
+                  ( ("list" variable
+                       (:pointer 1
+                        :type ("ICList" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [915 928])
+                    ("ic" variable (:type ("IC" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [929 935]))                  
+                :type "void")
+                nil [895 1139])
+            ("main" function
+               (:arguments 
+                  ( ("args_count" variable (:type "int") (reparse-symbol arg-sub-list) [1150 1165])
+                    ("args_values" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1166 1185]))                  
+                :type "int")
+                nil [1141 1572]))          
+      :file "bread_placer.c"
+      :pointmax 1573
+      :fsize 1572
+      :lastmodtime '(23341 45368 853371 842000)
+      :unmatched-syntax nil))
+  :file "!home!erick!C!bread_placer!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

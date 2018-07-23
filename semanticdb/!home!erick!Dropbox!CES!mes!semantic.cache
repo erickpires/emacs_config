@@ -1,0 +1,262 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("EXPRESSION_RDP_H" variable (:constant-flag t) nil [107 123])
+            ("stdint.h" include (:system-flag t) nil [127 146])
+            ("stdbool.h" include (:system-flag t) nil [147 167])
+            ("isize" type
+               (:typedef ("intptr_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [168 191])
+            ("int8" type
+               (:typedef ("int8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [192 214])
+            ("int16" type
+               (:typedef ("int16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [215 238])
+            ("int32" type
+               (:typedef ("int32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [239 262])
+            ("int64" type
+               (:typedef ("int64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [263 286])
+            ("usize" type
+               (:typedef ("size_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [288 315])
+            ("uint8" type
+               (:typedef ("uint8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [316 343])
+            ("uint16" type
+               (:typedef ("uint16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [344 372])
+            ("uint32" type
+               (:typedef ("uint32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [373 401])
+            ("uint64" type
+               (:typedef ("uint64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [402 430])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [431 457])
+            ("RdpTokenType" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("RDP_TYPE_OPERATOR" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [479 497])
+                          ("RDP_TYPE_OPERAND" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [502 519]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [460 535])
+            ("RdpOperator" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("PLUS" variable
+                             (:constant-flag t
+                              :default-value (566 569)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [556 569])
+                          ("MINUS" variable
+                             (:constant-flag t
+                              :default-value (585 588)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [575 588])
+                          ("TIMES" variable
+                             (:constant-flag t
+                              :default-value (604 607)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [594 607])
+                          ("DIVIDE" variable
+                             (:constant-flag t
+                              :default-value (623 626)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [613 626])
+                          ("OPEN_P" variable
+                             (:constant-flag t
+                              :default-value (642 645)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [632 645])
+                          ("CLOSE_P" variable
+                             (:constant-flag t
+                              :default-value (661 664)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [651 664]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [537 680])
+            ("RdpError" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("RDP_NO_ERROR" variable
+                             (:constant-flag t
+                              :default-value (716 717)
+                              :type "int")
+                              (reparse-symbol enumsubparts) [701 717])
+                          ("RDP_ERR_EARLY_EOS" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [723 741])
+                          ("RDP_ERR_NO_OPEN_PAREN" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [746 768])
+                          ("RDP_ERR_NO_CLOSE_PAREN" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [773 796]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [682 808])
+            ("RdpToken" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("type" variable (:type ("RdpTokenType" type (:type "class") nil nil)) (reparse-symbol classsubparts) [831 849])
+                          ("" type
+                             (:members 
+                                ( ("operand" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol classsubparts) [870 883]))                                
+                              :type "union")
+                              (reparse-symbol classsubparts) [854 920]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [810 932])
+            ("RdpExpression" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("expr" variable
+                             (:pointer 1
+                              :type ("RdpToken" type (:type "class") nil nil))
+                              (reparse-symbol classsubparts) [955 970])
+                          ("count" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol classsubparts) [975 987]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [934 1004])
+            ("parse_expression" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("expression" variable
+                       (:pointer 1
+                        :type ("RdpToken" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1028 1049])
+                    ("expression_size" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1050 1072])
+                    ("err" variable
+                       (:pointer 1
+                        :type ("RdpError" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1073 1087]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [1006 1088]))          
+      :file "expression_rdp.h"
+      :pointmax 1097
+      :fsize 1096
+      :lastmodtime '(23332 20407 377619 978000)
+      :unmatched-syntax '((punctuation 912 . 913) (OPERATOR 904 . 912) (symbol 892 . 903) (punctuation 912 . 913) (OPERATOR 904 . 912) (symbol 892 . 903))
+      :lexical-table 
+        '(("EXPRESSION_RDP_H" . ((number "1" 124 . 125)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("expression_rdp.h" include nil nil [41 68])
+            ("parse_E" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [306 326]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [293 327])
+            ("error" variable
+               (:typemodifiers ("static")
+                :default-value "RDP_NO_ERROR"
+                :type ("RdpError" type (:type "class") nil nil))
+                nil [329 366])
+            ("parse_R" function
+               (:arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [381 401]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [368 1131])
+            ("parse_T_prime" function
+               (:arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1152 1172])
+                    ("left_op" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1173 1186]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [1133 1798])
+            ("parse_T" function
+               (:arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1813 1833]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [1800 1900])
+            ("parse_E_prime" function
+               (:arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1921 1941])
+                    ("left_op" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1942 1955]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [1902 2562])
+            ("parse_E" function
+               (:arguments 
+                  ( ("expr" variable
+                       (:pointer 1
+                        :type ("RdpExpression" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2577 2597]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [2564 2664])
+            ("parse_expression" function
+               (:arguments 
+                  ( ("expression" variable
+                       (:pointer 1
+                        :type ("RdpToken" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2688 2709])
+                    ("expression_size" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2710 2732])
+                    ("err" variable
+                       (:pointer 1
+                        :type ("RdpError" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2733 2747]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [2666 2852]))          
+      :file "expression_rdp.c"
+      :pointmax 4093
+      :fsize 4092
+      :lastmodtime '(23332 20905 526350 947000)
+      :unmatched-syntax nil))
+  :file "!home!erick!Dropbox!CES!mes!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

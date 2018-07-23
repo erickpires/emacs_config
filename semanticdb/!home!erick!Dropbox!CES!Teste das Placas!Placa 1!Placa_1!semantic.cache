@@ -1,0 +1,109 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("int8" type
+               (:typedef ("char")
+                :type "typedef")
+                nil [46 64])
+            ("uint8" type
+               (:typedef ("byte" type (:type "class") nil nil)
+                :type "typedef")
+                nil [65 84])
+            ("int16" type
+               (:typedef ("short")
+                :type "typedef")
+                nil [85 105])
+            ("uint16" type
+               (:typedef ("unsigned short")
+                :type "typedef")
+                nil [106 136])
+            ("int32" type
+               (:typedef ("long")
+                :type "typedef")
+                nil [137 156])
+            ("uint32" type
+               (:typedef ("unsigned long")
+                :type "typedef")
+                nil [157 186])
+            ("nop" variable (:constant-flag t) nil [797 800])
+            ("chaves_ativadas" variable
+               (:typemodifiers ("static")
+                :default-value "false"
+                :type "bool")
+                nil [832 868])
+            ("rp_ativado" variable
+               (:typemodifiers ("static")
+                :default-value "false"
+                :type "bool")
+                nil [869 905])
+            ("rd_ativado" variable
+               (:typemodifiers ("static")
+                :default-value "false"
+                :type "bool")
+                nil [906 942])
+            ("valor_lido" variable
+               (:typemodifiers ("static" "volatile")
+                :type ("uint16" type (:type "class") nil nil))
+                nil [944 978])
+            ("clock" function (:type "void") nil [980 1066])
+            ("ativa_chave_de_dados" function (:type "void") nil [1068 1295])
+            ("desativa_chave_de_dados" function (:type "void") nil [1297 1395])
+            ("escreve_chave_de_dados" function
+               (:arguments 
+                  ( ("valor" variable (:type ("uint16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1425 1438]))                  
+                :type "void")
+                nil [1397 1568])
+            ("ativa_zcomp" function (:type "void") nil [1570 1627])
+            ("desativa_zcomp" function (:type "void") nil [1629 1690])
+            ("ativa_mais_um" function (:type "void") nil [1692 1751])
+            ("desativa_mais_um" function (:type "void") nil [1753 1816])
+            ("ativa_rd" function (:type "void") nil [1818 2033])
+            ("desativa_rd" function (:type "void") nil [2035 2116])
+            ("escreve_em_rd" function
+               (:arguments 
+                  ( ("valor" variable (:type ("uint16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2137 2150]))                  
+                :type "void")
+                nil [2118 2305])
+            ("ativa_rp" function (:type "void") nil [2307 2522])
+            ("desativa_rp" function (:type "void") nil [2524 2605])
+            ("ativa_rt" function (:type "void") nil [2607 2661])
+            ("le_somador" function (:type ("uint16" type (:type "class") nil nil)) nil [2663 2800])
+            ("le_vai_um" function (:type ("uint8" type (:type "class") nil nil)) nil [2802 2853])
+            ("checa_somador" function
+               (:arguments 
+                  ( ("valor" variable (:type ("uint16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2874 2887]))                  
+                :type "bool")
+                nil [2855 2955])
+            ("reporta_diff" function
+               (:arguments 
+                  ( ("expected" variable (:type ("uint16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2975 2991])
+                    ("received" variable (:type ("uint16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2992 3008]))                  
+                :type "void")
+                nil [2957 3373])
+            ("testa_zero" function (:type "bool") nil [3375 3718])
+            ("testa_chaves_de_dados" function (:type "bool") nil [3720 4304])
+            ("testa_mais_um" function (:type "bool") nil [4306 4882])
+            ("testa_rd" function (:type "bool") nil [4885 5412])
+            ("testa_rp" function (:type "bool") nil [5414 6644])
+            ("testa_rt" function (:type "bool") nil [6646 7787])
+            ("testa_somadores" function (:type "bool") nil [7789 9427])
+            ("setup" function (:type "void") nil [9429 9897])
+            ("loop" function (:type "void") nil [9899 10849]))          
+      :file "Placa_1.ino"
+      :pointmax 10850
+      :fsize 10852
+      :lastmodtime '(23340 1155 634616 534000)
+      :unmatched-syntax '((punctuation 205 . 206) (BOOL 201 . 205) (symbol 195 . 200) (TYPEDEF 187 . 194))
+      :lexical-table 
+        '(("nop" (spp-arg-list nil 800 . 802) . 
+              ((symbol "__asm__" 803 . 810) (VOLATILE "volatile" 811 . 819) (semantic-list "(\"nop\\n\\t\")" 819 . 830)))
+          )
+))
+  :file "!home!erick!Dropbox!CES!Teste das Placas!Placa 1!Placa_1!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

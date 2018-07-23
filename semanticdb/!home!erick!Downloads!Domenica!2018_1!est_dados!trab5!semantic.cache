@@ -1,0 +1,88 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("stdbool.h" include (:system-flag t) nil [40 60])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [62 88])
+            ("DESC_SIZE" variable (:constant-flag t) nil [98 107])
+            ("__digital_no" type
+               (:members 
+                  ( ("eh_final" variable (:type "bool") (reparse-symbol classsubparts) [147 161])
+                    ("desc" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [166 177])
+                    ("filho_0" variable
+                       (:pointer 1
+                        :type ("__digital_no" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [183 212])
+                    ("filho_1" variable
+                       (:pointer 1
+                        :type ("__digital_no" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [217 246]))                  
+                :type "struct")
+                nil [113 260])
+            ("digital_no" type
+               (:typedef ("__digital_no" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [113 260])
+            ("cria_no" function
+               (:pointer 1
+                :type ("digital_no" type (:type "class") nil nil))
+                nil [262 504])
+            ("digital_add" function
+               (:arguments 
+                  ( ("raiz" variable
+                       (:pointer 1
+                        :type ("digital_no" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [523 540])
+                    ("ip" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [541 549])
+                    ("n_bits" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [550 562])
+                    ("descricao" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [563 579]))                  
+                :type "void")
+                nil [506 1202])
+            ("digital_search" function
+               (:pointer 1
+                :arguments 
+                  ( ("raiz" variable
+                       (:pointer 1
+                        :type ("digital_no" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1225 1242])
+                    ("ip" variable (:type ("uint" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1243 1251]))                  
+                :type "char")
+                nil [1204 1706])
+            ("main" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [1717 1722]))                  
+                :type "int")
+                nil [1708 2727]))          
+      :file "trab5.c"
+      :pointmax 2728
+      :fsize 2727
+      :lastmodtime '(23341 11591 29801 615000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("DESC_SIZE" . ((number "256" 108 . 111)))
+          )
+))
+  :file "!home!erick!Downloads!Domenica!2018_1!est_dados!trab5!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

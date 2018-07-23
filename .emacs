@@ -41,7 +41,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (deadgrep avy org-bullets vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode magit expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
+    (auto-package-update ivy-rich swiper counsel eclim deadgrep avy org-bullets vlf auto-sudoedit circe multi-term tldr multi-web-mode batch-mode auctex color-theme-sanityinc-tomorrow color-theme-tango arjen-grey-theme smart-cursor-color zenburn-theme color-theme-zenburn zenburn irony-eldoc smart-mode-line-powerline-theme smart-mode-line company-jedi toml-mode move-text multiple-cursors hungry-delete neotree ag realgud company-irony-c-headers markdown-mode centered-cursor-mode expand-region elpy monokai-theme smart-compile company cargo racer rust-mode auto-complete)))
  '(pos-tip-background-color "#A6E22E")
  '(pos-tip-foreground-color "#272822")
  '(save-place t)
@@ -147,15 +147,55 @@ With argument, do this that many times."
 ;;
 ;; Interactively Do Things
 ;;
-(require 'ido)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode t)
+;; (require 'ido)
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode t)
 
 ;; Stops IDO from searching in other paths when the
 ;; file doesn't exists in the current path
-(setq ido-auto-merge-work-directories-length -1)
+;; (setq ido-auto-merge-work-directories-length -1)
 
+;;
+;; Ivy
+;;
+(use-package counsel
+             :after ivy
+             :bind (("C-x C-f" . counsel-find-file)
+                    ("M-x" . counsel-M-x)
+                    ("M-y" . counsel-yank-pop)))
+
+(use-package ivy
+             :defer 0.5
+             :diminish
+             :bind (("C-c C-r" . ivy-resume)
+                    ("C-x b" . ivy-switch-buffer)
+                    ("C-x B" . ivy-switch-buffer-other-window))
+             :custom
+             (ivy-count-format "(%d/%d) ")
+             (ivy-display-style 'fancy)
+             (ivy-use-virtual-buffers t)
+             :config (ivy-mode))
+
+(use-package ivy-rich
+             :after ivy
+             :custom
+             (ivy-virtual-abbreviate 'full
+                                     ivy-rich-switch-buffer-align-virtual-buffer t
+                                     ivy-rich-path-style 'abbrev)
+             :config
+             (ivy-set-display-transformer 'ivy-switch-buffer
+                                          'ivy-rich-switch-buffer-transformer))
+
+(use-package swiper
+             :after ivy
+             :bind (("C-s" . swiper)
+                    ;; ("C-r" . swiper)
+                    ))
+
+;;
+;;
+;;
 
 (require 'hungry-delete)
 (global-hungry-delete-mode)

@@ -1,0 +1,145 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("stdlib.h" include (:system-flag t) nil [20 39])
+            ("stdint.h" include (:system-flag t) nil [40 59])
+            ("stdbool.h" include (:system-flag t) nil [60 80])
+            ("assert.h" include (:system-flag t) nil [81 100])
+            ("string.h" include (:system-flag t) nil [101 120])
+            ("sys/types.h" include (:system-flag t) nil [122 144])
+            ("sys/stat.h" include (:system-flag t) nil [145 166])
+            ("unistd.h" include (:system-flag t) nil [167 186])
+            ("dirent.h" include (:system-flag t) nil [187 206])
+            ("termios.h" include (:system-flag t) nil [208 228])
+            ("fcntl.h" include (:system-flag t) nil [229 247])
+            ("isize" type
+               (:typedef ("intptr_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [249 272])
+            ("int8" type
+               (:typedef ("int8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [273 295])
+            ("int16" type
+               (:typedef ("int16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [296 319])
+            ("int32" type
+               (:typedef ("int32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [320 343])
+            ("int64" type
+               (:typedef ("int64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [344 367])
+            ("usize" type
+               (:typedef ("size_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [369 396])
+            ("uint8" type
+               (:typedef ("uint8_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [397 424])
+            ("uint16" type
+               (:typedef ("uint16_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [425 453])
+            ("uint32" type
+               (:typedef ("uint32_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [454 482])
+            ("uint64" type
+               (:typedef ("uint64_t" type (:type "class") nil nil)
+                :type "typedef")
+                nil [483 511])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :type "typedef")
+                nil [512 538])
+            ("dir_ent" type
+               (:typedef ("dirent" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [540 570])
+            ("parity_mode_t" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("NONE" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [591 596])
+                          ("ODD" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [601 605])
+                          ("EVEN" variable
+                             (:constant-flag t
+                              :type "int")
+                              (reparse-symbol enumsubparts) [610 616]))                        
+                      :type "enum")
+                      nil nil)
+                :type "typedef")
+                nil [572 631])
+            ("sizeof_array" variable (:constant-flag t) nil [641 653])
+            ("select_speed" function
+               (:arguments 
+                  ( ("str" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [715 725]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [697 2131])
+            ("select_number_of_bits" function
+               (:arguments 
+                  ( ("c" variable (:type "char") (reparse-symbol arg-sub-list) [2160 2167]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [2133 2468])
+            ("select_parity" function
+               (:arguments 
+                  ( ("c" variable (:type "char") (reparse-symbol arg-sub-list) [2498 2505]))                  
+                :type ("parity_mode_t" type (:type "class") nil nil))
+                nil [2470 2812])
+            ("select_stop_bits" function
+               (:arguments 
+                  ( ("c" variable (:type "char") (reparse-symbol arg-sub-list) [2836 2843]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [2814 3042])
+            ("read_until_linebreak" function
+               (:arguments 
+                  ( ("buf" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3165 3175])
+                    ("max_len" variable (:type ("usize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3176 3190])
+                    ("fd" variable (:type "int") (reparse-symbol arg-sub-list) [3191 3198]))                  
+                :type ("usize" type (:type "class") nil nil))
+                nil [3138 3454])
+            ("main" function
+               (:arguments 
+                  ( ("args_count" variable (:type "int") (reparse-symbol arg-sub-list) [3465 3480])
+                    ("args_values" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [3481 3500]))                  
+                :type "int")
+                nil [3456 9885]))          
+      :file "test_loader.c"
+      :pointmax 9886
+      :fsize 9885
+      :lastmodtime '(23317 28431 135994 197000)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("sizeof_array" (spp-arg-list ("array") 653 . 660) . ((semantic-list "(sizeof(array) / sizeof(array[0]))" 661 . 695)))
+          )
+))
+  :file "!home!erick!Dropbox!CES!Teste dos CIs!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

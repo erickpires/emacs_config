@@ -1,0 +1,68 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags nil
+      :file "features.h"
+      :pointmax 15698
+      :fsize 15697
+      :lastmodtime '(23274 6905 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags nil
+      :file "stdio.h"
+      :pointmax 29666
+      :fsize 29665
+      :lastmodtime '(23274 6910 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags nil
+      :file "stdlib.h"
+      :pointmax 35785
+      :fsize 35784
+      :lastmodtime '(23274 6910 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags nil
+      :file "stdint.h"
+      :pointmax 8627
+      :fsize 8626
+      :lastmodtime '(23274 6910 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags nil
+      :file "assert.h"
+      :pointmax 4562
+      :fsize 4561
+      :lastmodtime '(23274 6907 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :file "string.h"
+      :fsize 17545
+      :lastmodtime '(23274 6911 0 0))
+    (semanticdb-table "semanticdb-table"
+      :file "unistd.h"
+      :fsize 42785
+      :lastmodtime '(23274 6911 0 0))
+    (semanticdb-table "semanticdb-table"
+      :file "dirent.h"
+      :fsize 12484
+      :lastmodtime '(23274 6911 0 0))
+    (semanticdb-table "semanticdb-table"
+      :file "termios.h"
+      :fsize 3598
+      :lastmodtime '(23274 6911 0 0))
+    (semanticdb-table "semanticdb-table"
+      :file "fcntl.h"
+      :fsize 10564
+      :lastmodtime '(23274 6911 0 0)))
+  :file "!usr!include!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

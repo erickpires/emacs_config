@@ -15,6 +15,7 @@
         electric-newline-and-maybe-indent
         electric-pair-delete-pair
         end-of-buffer
+        end-of-visual-line
         hungry-delete-backward
         hungry-delete-forward
         kill-region
